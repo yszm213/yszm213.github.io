@@ -504,6 +504,17 @@ div.log{font-family:var(--mono); font-size:.78rem; color:var(--ink); padding:12p
   .nav-cta{margin-top:0}
 }
 @media (min-width:1100px) and (max-height:760px){ .side-card img, .side-card small{display:none} }
+
+/* ===== Lisibilité : texte secondaire plus clair, verre plus sombre ===== */
+:root{--muted:#C4C9DA}
+.glass, nav.top .wrap, section, .feature, .hero-main, .hero-side, .langs{
+  background:linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,.03)), rgba(8,10,18,.55)}
+.blob{opacity:.42}
+.feature p, .about p, .lede{color:#E6E8F1}
+.h-card > span, .learn-grid ul{color:#E6E8F1}
+.step p, .item p, .now li p, .tldr span, .log td.r span, .shots figcaption, .feats span{color:var(--muted)}
+.feature .tag, .eyebrow{color:#7FF0DE}
+@media (hover:hover){ .depth:hover > *:not(:hover){opacity:.55; filter:blur(1px) saturate(.7)} }
 </style>
 </head>
 <body>
