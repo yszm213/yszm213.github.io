@@ -515,6 +515,61 @@ div.log{font-family:var(--mono); font-size:.78rem; color:var(--ink); padding:12p
 .step p, .item p, .now li p, .tldr span, .log td.r span, .shots figcaption, .feats span{color:var(--muted)}
 .feature .tag, .eyebrow{color:#7FF0DE}
 @media (hover:hover){ .depth:hover > *:not(:hover){opacity:.55; filter:blur(1px) saturate(.7)} }
+
+/* ===== Reg Temp ===== */
+.thermo{position:relative; margin:22px 0 18px; border-radius:18px; border:1px solid var(--faint); background:rgba(7,8,13,.55); padding:14px 14px 10px; transform:translateZ(40px)}
+.thermo canvas{display:block; width:100%; height:190px}
+.thermo.big canvas{height:clamp(260px, 34vw, 400px)}
+.t-key{display:flex; flex-wrap:wrap; gap:6px 16px; font-family:var(--mono); font-size:.68rem; color:var(--muted); margin-top:8px}
+.t-key > span::before{content:""; display:inline-block; width:14px; height:3px; border-radius:2px; margin-right:6px; vertical-align:3px}
+.k-pid::before{background:#5EE6D0} .k-tor::before{background:#FFB45E} .k-c::before{background:repeating-linear-gradient(90deg,#fff 0 4px,transparent 4px 7px)} .k-e::before{background:#8FA2FF} .k-p::before{background:rgba(94,230,208,.35); height:8px !important; vertical-align:0 !important}
+.t-ctrl{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px 22px; align-items:start}
+.t-ctrl.two{grid-template-columns:repeat(3, minmax(0,1fr)); margin-top:18px}
+@media (max-width:720px){.t-ctrl, .t-ctrl.two{grid-template-columns:1fr}}
+.t-ctrl label{display:grid; gap:8px; font-size:.88rem; color:#E6E8F1}
+.t-ctrl label > span{display:flex; justify-content:space-between; gap:10px}
+.t-ctrl label b{font-family:var(--mono); font-weight:500; color:var(--accent-2)}
+.t-ctrl input[type=range]{width:100%; accent-color:#5EE6D0; height:24px}
+.t-read{grid-column:1 / -1; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px}
+@media (max-width:720px){.t-read{grid-template-columns:1fr}}
+.t-read > div{padding:14px 16px; border-radius:16px; border:1px solid var(--faint); background:rgba(255,255,255,.035); display:grid; gap:2px; align-content:start}
+.t-read span{font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.t-read b{font-family:var(--display); font-size:1.7rem; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+.t-read > div:nth-child(1) b{color:#5EE6D0} .t-read > div:nth-child(2) b{color:#FFB45E}
+.t-read small{font-family:var(--mono); font-size:.72rem; color:var(--muted)}
+.t-read .reset{margin-top:6px}
+pre.code{margin:18px 0 0; padding:18px 20px; border-radius:16px; border:1px solid var(--faint); background:rgba(7,8,13,.6); overflow-x:auto; font:400 .8rem/1.65 var(--mono); color:#E6E8F1}
+pre.code .c{color:#8C93AB}
+.step h3 small.f{font-family:var(--mono); font-weight:400; font-size:.7rem; color:var(--accent-2); margin-left:8px}
+.frame{display:grid; gap:16px; margin-top:20px}
+.f-bytes{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:8px}
+@media (max-width:640px){.f-bytes{grid-template-columns:repeat(3, minmax(0,1fr))}}
+.f-byte{border-radius:14px; border:1px solid var(--faint); background:rgba(255,255,255,.035); padding:12px 10px; text-align:center; cursor:default; transition:transform .3s var(--ease), border-color .3s, background .3s}
+.f-byte .hx{font:500 1.15rem var(--mono)}
+.f-byte .nb{display:flex; justify-content:center; gap:4px; margin-top:6px; font:400 .74rem var(--mono)}
+.f-byte .nb i{font-style:normal; padding:2px 5px; border-radius:6px}
+.f-byte .nb i:first-child{background:rgba(255,180,94,.14); color:#FFB45E}
+.f-byte .nb i:last-child{background:rgba(94,230,208,.14); color:#5EE6D0}
+.f-byte small{display:block; margin-top:6px; font:400 .62rem var(--mono); color:var(--muted)}
+.f-byte.on, .f-byte:hover{transform:translateY(-3px); border-color:rgba(94,230,208,.6); background:rgba(94,230,208,.08)}
+.f-out{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px}
+@media (max-width:820px){.f-out{grid-template-columns:1fr}}
+.f-out > div{padding:16px; border-radius:16px; border:1px solid var(--faint); background:rgba(255,255,255,.035); display:grid; gap:8px; align-content:start}
+.f-out > div > span{font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.f-out b{font-family:var(--display); font-size:1.5rem; letter-spacing:-.02em}
+.f-bits{display:flex; gap:6px; font:500 .86rem var(--mono)}
+.f-bits i{font-style:normal; padding:3px 6px; border-radius:6px; background:rgba(255,255,255,.05); transition:background .3s, color .3s}
+.f-bits i.on{background:rgba(94,230,208,.22); color:#5EE6D0}
+.f-cmd code{font:500 1.3rem var(--mono); color:#FFB45E}
+.f-cmd small{font-family:var(--mono); font-size:.7rem; color:var(--muted)}
+@media (min-width:1100px){
+  [data-sec="ecole"] .reg-tile{grid-column:span 5; display:flex; flex-direction:column}
+  [data-sec="ecole"] .reg-tile .more{margin-top:auto; align-self:flex-start}
+  [data-sec="ecole"] .reg-tile .stack{margin-bottom:22px}
+  [data-sec="ecole"] .others{grid-column:span 4}
+  [data-sec="ecole"] .edu{grid-column:span 8}
+  [data-sec="ecole"] .edu .list{grid-auto-rows:1fr}
+}
 </style>
 </head>
 <body>
@@ -697,15 +752,22 @@ div.log{font-family:var(--mono); font-size:.78rem; color:var(--ink); padding:12p
         <a class="more" href="#robotmaze" data-go="robotmaze"><span data-l="fr">Jouer et voir le projet →</span><span data-l="en">Play and see the project →</span></a>
       </article>
 
+      <article class="feature reg-tile" data-tilt>
+        <div class="tag"><span data-l="fr">Projet d'école · 03 / 2026 · binôme</span><span data-l="en">School project · 03 / 2026 · pair</span></div>
+        <h3><span data-l="fr">Reg Temp&nbsp;: un thermostat intelligent codé en C</span><span data-l="en">Reg Temp: a smart thermostat written in C</span></h3>
+        <p data-l="fr">Le programme lit les températures d'une carte STM32 en USB, calcule la puissance de chauffage avec un PID et la renvoie à la carte. Ci-dessous, la vraie simulation, en direct.</p>
+        <p data-l="en">The program reads temperatures from an STM32 board over USB, computes the heating power with a PID controller and sends it back. Below, the real simulation, running live.</p>
+        <div class="thermo mini" data-thermo="mini"><canvas aria-label="Simulation de régulation de température"></canvas>
+          <div class="t-key"><span class="k-pid">PID</span><span class="k-tor"><span data-l="fr">Tout-ou-rien</span><span data-l="en">On/off</span></span><span class="k-c"><span data-l="fr">Consigne 19 °C</span><span data-l="en">Setpoint 19 °C</span></span></div></div>
+        <div class="stack"><span>C</span><span>STM32 · ARM Cortex-M</span><span>USB FTDI</span><span>PID</span><span>Makefile</span></div>
+        <a class="more" href="#regtemp" data-go="regtemp"><span data-l="fr">Régler la température soi-même →</span><span data-l="en">Set the temperature yourself →</span></a>
+      </article>
+
       <div class="list others depth">
         <div class="item"><div class="d">05 / 2026</div><div><h3><span data-l="fr">Optimisation du chargement de wagons</span><span data-l="en">Railcar loading optimisation</span></h3>
           <p data-l="fr">Algorithme de répartition d'une liste d'objets dans des wagons, en 1D, 2D et 3D (bin packing).</p>
           <p data-l="en">Algorithm that packs a list of items into railcars, in 1D, 2D and 3D (bin packing).</p>
           <div class="stack"><span>Python</span><span><span data-l="fr">Algorithmique</span><span data-l="en">Algorithms</span></span></div></div></div>
-        <div class="item"><div class="d">03 / 2026</div><div><h3><span data-l="fr">Régulation de température</span><span data-l="en">Temperature control system</span></h3>
-          <p data-l="fr">Circuit électronique testé par blocs et carte ARM Cortex-M programmée en C, simulant la température d'une maison.</p>
-          <p data-l="en">Electronic circuit tested block by block and an ARM Cortex-M board programmed in C, simulating a house's temperature.</p>
-          <div class="stack"><span>C</span><span>ARM Cortex-M</span></div></div></div>
         
       </div>
 
@@ -1070,6 +1132,110 @@ div.log{font-family:var(--mono); font-size:.78rem; color:var(--ink); padding:12p
   <footer><span>© 2026 Yanis Zmouli</span><a href="#mastation" data-go="mastation"><span data-l="fr">Voir aussi&nbsp;: MaStation →</span><span data-l="en">See also: MaStation →</span></a></footer>
 </main>
 
+<!-- ================= ÉTUDE DE CAS : REG TEMP ================= -->
+<main class="wrap view case" id="view-regtemp" hidden>
+  <a class="back" href="#ecole" data-go="ecole"><span data-l="fr">← Retour aux projets</span><span data-l="en">← Back to projects</span></a>
+  <header class="hero">
+    <div class="eyebrow"><span data-l="fr">Projet d'école · informatique embarquée</span><span data-l="en">School project · embedded software</span></div>
+    <h1>Reg Temp</h1>
+    <p class="lede" data-l="fr">Un programme en C qui chauffe une maison à la bonne température&nbsp;: il lit les capteurs d'une carte STM32 par USB, décide de la puissance de chauffage, et la renvoie à la carte, chaque seconde.</p>
+    <p class="lede" data-l="en">A C program that keeps a house at the right temperature: it reads an STM32 board's sensors over USB, decides the heating power and sends it back to the board, every second.</p>
+    <div class="meta">
+      <div><span>Date</span>03 / 2026</div>
+      <div><span data-l="fr">Équipe</span><span data-l="en">Team</span><b data-l="fr" style="font-weight:400">Binôme avec Ibrahim Saou</b><b data-l="en" style="font-weight:400">Pair project with Ibrahim Saou</b></div>
+      <div><span>Code</span><b data-l="fr" style="font-weight:400">C, ~600 lignes, 9 modules</b><b data-l="en" style="font-weight:400">C, ~600 lines, 9 modules</b></div>
+      <div><span data-l="fr">Matériel</span><span data-l="en">Hardware</span>STM32 · USB FTDI</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow"><span data-l="fr">À vous de régler</span><span data-l="en">Your turn</span></div>
+      <h2><span data-l="fr">Deux thermostats, la même maison</span><span data-l="en">Two thermostats, the same house</span></h2></div>
+    <div class="body">
+      <p data-l="fr" style="max-width:62ch; color:#E6E8F1">Les deux courbes partent de 15&nbsp;°C dans la même maison simulée. Le PID réagit fort, dépasse la cible, puis ses oscillations se réduisent jusqu'à se caler sur la consigne. Le tout-ou-rien monte plus lentement, puis s'allume et s'éteint sans arrêt autour de la cible. Changez la consigne ou la température extérieure pour voir comment chacun réagit.</p>
+      <p data-l="en" style="max-width:62ch; color:#E6E8F1">Both curves start at 15 °C in the same simulated house. The PID reacts strongly, overshoots, then its swings shrink until it settles on the setpoint. The on/off thermostat climbs more slowly, then keeps switching on and off around the target. Change the setpoint or the outside temperature to see how each one reacts.</p>
+      <div class="thermo big" data-thermo="big">
+        <canvas aria-label="Courbes de température PID et tout-ou-rien"></canvas>
+        <div class="t-key"><span class="k-pid">PID</span><span class="k-tor"><span data-l="fr">Tout-ou-rien</span><span data-l="en">On/off</span></span><span class="k-c"><span data-l="fr">Consigne</span><span data-l="en">Setpoint</span></span><span class="k-e"><span data-l="fr">Extérieur</span><span data-l="en">Outside</span></span><span class="k-p"><span data-l="fr">Puissance PID</span><span data-l="en">PID power</span></span></div>
+      </div>
+      <div class="t-ctrl">
+        <label><span><span data-l="fr">Consigne</span><span data-l="en">Setpoint</span> <b data-out="c">19,0 °C</b></span><input type="range" min="12" max="26" step="0.5" value="19" data-in="c"></label>
+        <label><span><span data-l="fr">Température extérieure</span><span data-l="en">Outside temperature</span> <b data-out="e">10,0 °C</b></span><input type="range" min="-5" max="18" step="0.5" value="10" data-in="e"></label>
+        <div class="t-read depth">
+          <div><span data-l="fr">Intérieur · PID</span><span data-l="en">Inside · PID</span><b data-out="tp">15,0 °C</b><small data-out="pp">0 %</small></div>
+          <div><span data-l="fr">Intérieur · tout-ou-rien</span><span data-l="en">Inside · on/off</span><b data-out="tt">15,0 °C</b><small data-out="pt">0 %</small></div>
+          <div><span data-l="fr">Temps simulé</span><span data-l="en">Simulated time</span><b data-out="time">0 min</b><button type="button" class="reset" data-act="reset"><span data-l="fr">↺ Recommencer</span><span data-l="en">↺ Restart</span></button></div>
+        </div>
+      </div>
+      <p style="margin-top:16px; font-size:.82rem; color:var(--muted)"><span data-l="fr">Le simulateur et les deux régulations sont recodés en JavaScript à partir de notre code C, avec les mêmes constantes&nbsp;: Kp = 1,1, Ki = 0,2, Kd = 0,15, un pas de 10 s et un chauffage de 3 200 W. 1 seconde à l'écran = 10 minutes dans la maison.</span><span data-l="en">The simulator and both controllers are ported to JavaScript from our C code, with the same constants: Kp = 1.1, Ki = 0.2, Kd = 0.15, a 10 s step and a 3,200 W heater. 1 second on screen = 10 minutes in the house.</span></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow"><span data-l="fr">Les deux lois de régulation</span><span data-l="en">The two control laws</span></div>
+      <h2><span data-l="fr">Tout-ou-rien contre PID</span><span data-l="en">On/off versus PID</span></h2></div>
+    <div class="body feats depth">
+      <div><b><span data-l="fr">Tout-ou-rien</span><span data-l="en">On/off</span></b>
+        <span data-l="fr">Comme un vieux thermostat&nbsp;: s'il fait moins que la consigne, on chauffe à 50&nbsp;%, sinon on coupe. Simple, mais la température oscille sans cesse autour de la cible.</span>
+        <span data-l="en">Like an old thermostat: below the setpoint, heat at 50%; otherwise switch off. Simple, but the temperature keeps oscillating around the target.</span></div>
+      <div><b>PID</b>
+        <span data-l="fr">La puissance dépend de l'écart actuel (P), de l'écart accumulé dans le temps, calculé par la méthode des trapèzes (I), et de la vitesse à laquelle l'écart change (D). Le résultat est borné entre 0 et 100&nbsp;%.</span>
+        <span data-l="en">Power depends on the current error (P), the error accumulated over time, computed with the trapezoidal rule (I), and how fast the error changes (D). The result is clamped between 0 and 100%.</span></div>
+    </div>
+    <pre class="code"><code><span class="c">// regulation.c : extrait de notre loi PID</span>
+float erreur = csgn - temperature_int;
+intermedI = *int_prec + ((erreur + *erreur_prec) / 2.0f) * dt;  <span class="c">// intégrale (trapèzes)</span>
+intermedD = (erreur - *erreur_prec) / dt;                       <span class="c">// dérivée</span>
+float cmd = KP * erreur + KI * intermedI + KD * intermedD;
+if (cmd > 100) cmd = 100; else if (cmd &lt; 0) cmd = 0;</code></pre>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow"><span data-l="fr">Dialogue avec la carte</span><span data-l="en">Talking to the board</span></div>
+      <h2><span data-l="fr">Décoder la trame USB</span><span data-l="en">Decoding the USB frame</span></h2></div>
+    <div class="body">
+      <p data-l="fr" style="max-width:62ch; color:#E6E8F1">La carte envoie 6 octets par mesure. Dans chaque octet, les 4 bits de gauche disent de quel capteur et de quel morceau il s'agit, les 4 bits de droite portent la donnée. Le programme recolle les 3 morceaux de chaque capteur en une valeur de 12 bits, vérifie qu'aucun ne manque, puis la convertit en degrés&nbsp;: T = −39,64 + 0,04 × valeur. Bougez les curseurs ou survolez un octet.</p>
+      <p data-l="en" style="max-width:62ch; color:#E6E8F1">The board sends 6 bytes per reading. In each byte, the left 4 bits say which sensor and which chunk it is, the right 4 bits carry the data. The program stitches each sensor's 3 chunks into a 12-bit value, checks none is missing, then converts it to degrees: T = −39.64 + 0.04 × value. Move the sliders or hover a byte.</p>
+      <div class="frame">
+        <div class="f-bytes" data-frame></div>
+        <div class="f-out">
+          <div data-sensor="ext"><span data-l="fr">Capteur extérieur</span><span data-l="en">Outside sensor</span><div class="f-bits" data-bits="ext"></div><b data-out="fe"></b></div>
+          <div data-sensor="int"><span data-l="fr">Capteur intérieur</span><span data-l="en">Inside sensor</span><div class="f-bits" data-bits="int"></div><b data-out="fi"></b></div>
+          <div class="f-cmd"><span data-l="fr">Réponse du PC&nbsp;: 1 octet de commande</span><span data-l="en">PC reply: 1 command byte</span><code data-out="fc"></code><small><span data-l="fr">puissance × 127 / 100</span><span data-l="en">power × 127 / 100</span></small></div>
+        </div>
+        <div class="t-ctrl two">
+          <label><span><span data-l="fr">Extérieur</span><span data-l="en">Outside</span> <b data-out="fes">10,0 °C</b></span><input type="range" min="-10" max="30" step="0.04" value="10" data-fin="ext"></label>
+          <label><span><span data-l="fr">Intérieur</span><span data-l="en">Inside</span> <b data-out="fis">19,0 °C</b></span><input type="range" min="0" max="35" step="0.04" value="19" data-fin="int"></label>
+          <label><span><span data-l="fr">Puissance envoyée</span><span data-l="en">Power sent</span> <b data-out="fps">41 %</b></span><input type="range" min="0" max="100" step="1" value="41" data-fin="pow"></label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><div class="eyebrow"><span data-l="fr">Sous le capot</span><span data-l="en">Under the hood</span></div>
+      <h2><span data-l="fr">Comment c'est construit</span><span data-l="en">How it's built</span></h2></div>
+    <div class="body steps depth">
+      <div class="step"><div><h3><span data-l="fr">Lecture des capteurs</span><span data-l="en">Reading the sensors</span> <small class="f">releve.c</small></h3>
+        <p data-l="fr">Connexion à la carte STM32 avec la librairie FTDI (115 200 bauds, 8 bits, sans parité), lecture et décodage des 6 octets de chaque mesure.</p>
+        <p data-l="en">Connects to the STM32 board with the FTDI library (115,200 baud, 8 bits, no parity), then reads and decodes the 6 bytes of each reading.</p></div></div>
+      <div class="step"><div><h3><span data-l="fr">Consigne modifiable en direct</span><span data-l="en">Live setpoint</span> <small class="f">consigne.c</small></h3>
+        <p data-l="fr">La consigne est relue dans un fichier à chaque tour, avec un fichier verrou pour ne pas la lire pendant qu'elle est modifiée. Une consigne de 5&nbsp;°C ou moins coupe le chauffage et arrête proprement le programme.</p>
+        <p data-l="en">The setpoint is re-read from a file every cycle, with a lock file so it is never read mid-edit. A setpoint of 5 °C or less turns the heating off and stops the program cleanly.</p></div></div>
+      <div class="step"><div><h3><span data-l="fr">Régulation</span><span data-l="en">Control</span> <small class="f">regulation.c</small></h3>
+        <p data-l="fr">Les deux lois, tout-ou-rien et PID, avec une fonction de test qui rejoue une série de températures.</p>
+        <p data-l="en">Both laws, on/off and PID, plus a test function that replays a series of temperatures.</p></div></div>
+      <div class="step"><div><h3><span data-l="fr">Envoi de la commande</span><span data-l="en">Sending the command</span> <small class="f">commande.c</small></h3>
+        <p data-l="fr">La puissance de 0 à 100&nbsp;% est convertie en un octet de 0 à 127 et envoyée à la carte, avec vérification de l'envoi.</p>
+        <p data-l="en">Power from 0 to 100% is converted to a byte from 0 to 127 and sent to the board, with a write check.</p></div></div>
+      <div class="step"><div><h3><span data-l="fr">Simulateur et visualisation</span><span data-l="en">Simulator and display</span> <small class="f">simulateur.c · visualisation*.c</small></h3>
+        <p data-l="fr">Un modèle thermique de la maison remplace la carte pour tester sans matériel. À chaque tour, l'état (chauffage, températures) est écrit dans un fichier lu par l'interface graphique fournie.</p>
+        <p data-l="en">A thermal model of the house replaces the board for hardware-free testing. Every cycle, the state (heater, temperatures) is written to a file read by the supplied GUI.</p></div></div>
+    </div>
+  </section>
+  <footer><span>© 2026 Yanis Zmouli</span><a href="#mastation" data-go="mastation"><span data-l="fr">Voir aussi&nbsp;: MaStation →</span><span data-l="en">See also: MaStation →</span></a></footer>
+</main>
+
 <script>
 (function(){
   var root=document.documentElement;
@@ -1085,12 +1251,12 @@ div.log{font-family:var(--mono); font-size:.78rem; color:var(--ink); padding:12p
   document.querySelectorAll('.langs button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
 
   /* Vues et rubriques */
-  var views={home:document.getElementById('view-home'), mastation:document.getElementById('view-mastation'), automo:document.getElementById('view-automo'), robotmaze:document.getElementById('view-robotmaze'), drzm:document.getElementById('view-drzm')};
+  var views={home:document.getElementById('view-home'), mastation:document.getElementById('view-mastation'), automo:document.getElementById('view-automo'), robotmaze:document.getElementById('view-robotmaze'), drzm:document.getElementById('view-drzm'), regtemp:document.getElementById('view-regtemp')};
   var links=[].slice.call(document.querySelectorAll('nav.top a.lnk'));
   function show(name){ Object.keys(views).forEach(function(k){ views[k].hidden = (k!==name); }); }
   function route(target){
     var h = target || location.hash.slice(1);
-    if(h==='mastation' || h==='automo' || h==='robotmaze' || h==='drzm'){ show(h); window.scrollTo(0,0); onScroll(); return; }
+    if(h==='mastation' || h==='automo' || h==='robotmaze' || h==='drzm' || h==='regtemp'){ show(h); window.scrollTo(0,0); onScroll(); return; }
     show('home');
     var el = h && h!=='top' ? views.home.querySelector('[data-sec="'+h+'"]') : null;
     if(el){ el.scrollIntoView(); } else { window.scrollTo(0,0); }
@@ -1152,13 +1318,13 @@ div.log{font-family:var(--mono); font-size:.78rem; color:var(--ink); padding:12p
   /* Couleurs par rubrique */
   var hues={top:['#3B4BFF','#12B5A0','#A23BFF'], apropos:['#4B5BFF','#7A3BFF','#1E8FB5'], maintenant:['#C98A1E','#3B4BFF','#B53B6E'],
     experiences:['#12B5A0','#2B6BFF','#2BB55E'], ecole:['#2B47FF','#12A6B5','#6E3BFF'], perso:['#B53BFF','#FF5E8F','#3B4BFF'],
-    competences:['#12B5A0','#5E7BFF','#12D0E6'], contact:['#7A3BFF','#3B4BFF','#12B5A0'], mastation:['#12B5A0','#2B47FF','#5EE6D0'], automo:['#FF5E5E','#B53BFF','#FFB45E'], robotmaze:['#393D7E','#2E6BFF','#FFBF00'], drzm:['#D62E3C','#1E3A8A','#3B82F6']};
+    competences:['#12B5A0','#5E7BFF','#12D0E6'], contact:['#7A3BFF','#3B4BFF','#12B5A0'], mastation:['#12B5A0','#2B47FF','#5EE6D0'], automo:['#FF5E5E','#B53BFF','#FFB45E'], robotmaze:['#393D7E','#2E6BFF','#FFBF00'], drzm:['#D62E3C','#1E3A8A','#3B82F6'], regtemp:['#FF6B3B','#2B47FF','#C98A1E']};
   function paint(k){ var c=hues[k]; if(!c) return; root.style.setProperty('--c1',c[0]); root.style.setProperty('--c2',c[1]); root.style.setProperty('--c3',c[2]); }
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('inview');
       var k=e.target.getAttribute('data-sec'); if(k && !document.getElementById('view-home').hidden) paint(k);
       e.target.querySelectorAll('.count').forEach(countUp); } }); }, {rootMargin:'-40% 0px -45% 0px'});
   document.querySelectorAll('[data-sec], .case section').forEach(function(el){ io.observe(el); });
-  ['view-mastation','view-automo','view-robotmaze','view-drzm','view-home'].forEach(function(id){ new MutationObserver(function(){ var v=document.getElementById(id); if(!v.hidden){ paint(id==='view-home'?'top':id.slice(5)); } }).observe(document.getElementById(id),{attributes:true, attributeFilter:['hidden']}); });
+  ['view-mastation','view-automo','view-robotmaze','view-drzm','view-regtemp','view-home'].forEach(function(id){ new MutationObserver(function(){ var v=document.getElementById(id); if(!v.hidden){ paint(id==='view-home'?'top':id.slice(5)); } }).observe(document.getElementById(id),{attributes:true, attributeFilter:['hidden']}); });
   /* Compteurs : la valeur finale est visible au repos, l'animation ne se joue qu'à l'écran */
   function countUp(el){ if(reduce || el.dataset.done) return; el.dataset.done=1; var to=+el.dataset.to, t0=null;
     var fmt=function(v){ return Math.round(v).toLocaleString(root.getAttribute('data-lang')==='en'?'en-US':'fr-FR'); };
@@ -1248,6 +1414,100 @@ div.log{font-family:var(--mono); font-size:.78rem; color:var(--ink); padding:12p
   new MutationObserver(function(){ if(!document.getElementById('view-robotmaze').hidden){ setTimeout(function(){ bots.forEach(place); },30); } })
     .observe(document.getElementById('view-robotmaze'),{attributes:true, attributeFilter:['hidden']});
   reset();
+})();
+</script>
+
+<script>
+(function(){
+  /* Reg Temp : simulateur thermique + régulations, mêmes constantes que le code C */
+  var CTH=73746.9, RGF=0.00686, PMAX=3200, DT=10, KR=CTH*RGF/DT, KP=1.1, KI=0.2, KD=0.15;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function fr(){ return document.documentElement.getAttribute('data-lang')!=='en'; }
+  function fmt(v,d){ var s=v.toFixed(d===undefined?1:d); return fr()? s.replace('.',',') : s; }
+  function simStep(ti, te, p){ return (te + RGF*PMAX*(p/100) + ti*KR)/(KR+1); }
+  function Thermo(box, opts){
+    var cv=box.querySelector('canvas'), ctx=cv.getContext('2d'), N=opts.big?420:300, st, W=0, H=0, running=false, visible=false, acc=0, last=0;
+    var c=19, te=10;
+    function reset(){ st={tp:15, tt:15, ep:0, I:0, first:true, k:0, hist:[]}; }
+    function step(){
+      var pt = st.tt < c ? 50 : 0;
+      var e=c-st.tp, Ii, D;
+      if(st.first){ Ii=0; D=0; } else { Ii=st.I+((e+st.ep)/2)*DT; D=(e-st.ep)/DT; }
+      var pp=KP*e+KI*Ii+KD*D; pp=Math.max(0,Math.min(100,pp)); st.ep=e; st.I=Ii; st.first=false;
+      st.tp=simStep(st.tp, te, pp); st.tt=simStep(st.tt, te, pt); st.k++;
+      st.hist.push({tp:st.tp, tt:st.tt, pp:pp, pt:pt, c:c, te:te}); if(st.hist.length>N) st.hist.shift();
+      if(opts.mini && st.k>N) reset();
+    }
+    function size(){ var r=cv.getBoundingClientRect(), dpr=Math.min(2,devicePixelRatio||1); W=r.width; H=r.height; cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0); }
+    function draw(){
+      if(!W) size(); ctx.clearRect(0,0,W,H);
+      var hs=st.hist, lo=Infinity, hi=-Infinity;
+      hs.forEach(function(h){ lo=Math.min(lo,h.tp,h.tt,h.c,h.te); hi=Math.max(hi,h.tp,h.tt,h.c,h.te); });
+      if(!hs.length){ lo=Math.min(te,15,c); hi=Math.max(c,15,te); }
+      lo=Math.floor(lo-1); hi=Math.ceil(hi+1);
+      var padL=34, padB=opts.big?30:8, ph=opts.big?44:22, gh=H-padB-ph-8;
+      function X(i){ return padL+(W-padL-6)*i/(N-1); } function Y(v){ return 6+gh*(1-(v-lo)/(hi-lo)); }
+      ctx.font='10px "JetBrains Mono", monospace'; ctx.fillStyle='rgba(196,201,218,.75)'; ctx.strokeStyle='rgba(255,255,255,.06)'; ctx.lineWidth=1;
+      var stepv=(hi-lo)>12?4:2; for(var v=Math.ceil(lo/stepv)*stepv; v<=hi; v+=stepv){ var y=Y(v); ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-6,y); ctx.stroke(); ctx.fillText(v+'°',2,y+3); }
+      if(opts.big){ ctx.fillText(fr()?'puissance':'power',2,H-padB-ph/2+3); for(var m=0;m<=N*DT/60;m+=(W<640?20:10)){ var x=X(m*60/DT); ctx.fillText(m+' min', Math.min(x-12, W-40), H-10); } }
+      var base=H-padB; ctx.fillStyle='rgba(94,230,208,.28)';
+      hs.forEach(function(h,i){ var bh=ph*h.pp/100; ctx.fillRect(X(i), base-bh, Math.max(1,(W-padL)/N), bh); });
+      function line(key,col,w,dash){ ctx.beginPath(); ctx.setLineDash(dash||[]); ctx.strokeStyle=col; ctx.lineWidth=w; hs.forEach(function(h,i){ var y=Y(h[key]); if(i) ctx.lineTo(X(i),y); else ctx.moveTo(X(i),y); }); ctx.stroke(); ctx.setLineDash([]); }
+      line('te','rgba(143,162,255,.8)',1.5); line('c','rgba(255,255,255,.85)',1.5,[5,4]); line('tt','#FFB45E',2.2); line('tp','#5EE6D0',2.6);
+      if(hs.length){ var h=hs[hs.length-1], i=hs.length-1; [['tp','#5EE6D0'],['tt','#FFB45E']].forEach(function(a){ ctx.fillStyle=a[1]; ctx.beginPath(); ctx.arc(X(i),Y(h[a[0]]),4,0,6.3); ctx.fill(); }); }
+      if(opts.onDraw) opts.onDraw(st);
+    }
+    function loop(t){ if(!running) return; if(!last) last=t; acc+=Math.min(100,t-last)*(opts.big?0.06:0.05); last=t;
+      while(acc>=1){ step(); acc-=1; } draw(); requestAnimationFrame(loop); }
+    function play(){ if(running||!visible) return; running=true; last=0; requestAnimationFrame(loop); }
+    function stop(){ running=false; }
+    reset();
+    if(reduce){ for(var i=0;i<N;i++) step(); }
+    new IntersectionObserver(function(es){ es.forEach(function(e){ visible=e.isIntersecting; if(visible){ size(); if(reduce) draw(); else play(); } else stop(); }); }).observe(box);
+    addEventListener('resize', function(){ size(); draw(); });
+    return { set:function(k,v){ if(k==='c') c=v; else te=v; if(reduce){ for(var i=0;i<N;i++) step(); draw(); } },
+             reset:function(){ reset(); if(reduce){ for(var i=0;i<N;i++) step(); } draw(); } };
+  }
+  var mini=document.querySelector('[data-thermo="mini"]'); if(mini) Thermo(mini,{mini:true});
+  var big=document.querySelector('[data-thermo="big"]');
+  if(big){
+    var sec=big.closest('section'), q=function(s){ return sec.querySelector(s); };
+    var T=Thermo(big,{big:true, onDraw:function(st){ var h=st.hist[st.hist.length-1]||{pp:0,pt:0};
+      q('[data-out="tp"]').textContent=fmt(st.tp)+' °C'; q('[data-out="tt"]').textContent=fmt(st.tt)+' °C';
+      q('[data-out="pp"]').textContent=(fr()?'chauffage ':'heating ')+Math.round(h.pp)+' %'; q('[data-out="pt"]').textContent=(fr()?'chauffage ':'heating ')+Math.round(h.pt)+' %';
+      q('[data-out="time"]').textContent=Math.round(st.k*DT/60)+' min'; }});
+    sec.querySelectorAll('[data-in]').forEach(function(inp){ inp.addEventListener('input', function(){ var v=+inp.value; T.set(inp.dataset.in, v); q('[data-out="'+inp.dataset.in+'"]').textContent=fmt(v)+' °C'; }); });
+    q('[data-act="reset"]').addEventListener('click', function(){ T.reset(); });
+  }
+  /* Trame USB */
+  var fb=document.querySelector('[data-frame]');
+  if(fb){
+    var fsec=fb.closest('section'), fq=function(s){ return fsec.querySelector(s); };
+    var labels=[['0x0','ext','11–8'],['0x1','ext','7–4'],['0x2','ext','3–0'],['0x8','int','11–8'],['0x9','int','7–4'],['0xA','int','3–0']];
+    function sot(t){ return Math.max(0,Math.min(4095,Math.round((t+39.64)/0.04))); }
+    function hex(n,w){ return n.toString(16).toUpperCase().padStart(w,'0'); }
+    function bin(n){ return n.toString(2).padStart(4,'0'); }
+    function render(){
+      var te=+fq('[data-fin="ext"]').value, ti=+fq('[data-fin="int"]').value, pw=+fq('[data-fin="pow"]').value;
+      var se=sot(te), si=sot(ti), nib=function(s,k){ return (s>>(8-4*k))&15; };
+      var bytes=[0,1,2].map(function(k){ return (k<<4)|nib(se,k); }).concat([0,1,2].map(function(k){ return ((8+k)<<4)|nib(si,k); }));
+      fb.innerHTML=bytes.map(function(b,i){ var l=labels[i];
+        return '<div class="f-byte" data-i="'+i+'"><div class="hx">0x'+hex(b,2)+'</div><div class="nb"><i>'+bin(b>>4)+'</i><i>'+bin(b&15)+'</i></div><small>'+(l[1]==='ext'?(fr()?'ext.':'out'):(fr()?'int.':'in'))+' · bits '+l[2]+'</small></div>'; }).join('');
+      ['ext','int'].forEach(function(s){ var v=s==='ext'?se:si; fq('[data-bits="'+s+'"]').innerHTML=[0,1,2].map(function(k){ return '<i data-k="'+k+'">'+bin(nib(v,k))+'</i>'; }).join(''); });
+      fq('[data-out="fe"]').textContent='0x'+hex(se,3)+' = '+se+' → '+fmt(-39.64+0.04*se,2)+' °C';
+      fq('[data-out="fi"]').textContent='0x'+hex(si,3)+' = '+si+' → '+fmt(-39.64+0.04*si,2)+' °C';
+      var cb=Math.floor(pw*127/100); fq('[data-out="fc"]').textContent='0x'+hex(cb,2)+'  ('+cb+')';
+      fq('[data-out="fes"]').textContent=fmt(te)+' °C'; fq('[data-out="fis"]').textContent=fmt(ti)+' °C'; fq('[data-out="fps"]').textContent=pw+' %';
+    }
+    function hl(i){ fsec.querySelectorAll('.f-bits i').forEach(function(x){ x.classList.remove('on'); }); fb.querySelectorAll('.f-byte').forEach(function(x){ x.classList.toggle('on', +x.dataset.i===i); });
+      if(i<0) return; var s=i<3?'ext':'int', k=i%3; fq('[data-bits="'+s+'"] [data-k="'+k+'"]').classList.add('on'); }
+    fb.addEventListener('pointerover', function(e){ var b=e.target.closest('.f-byte'); if(b) hl(+b.dataset.i); });
+    fb.addEventListener('pointerleave', function(){ hl(-1); });
+    fb.addEventListener('click', function(e){ var b=e.target.closest('.f-byte'); if(b) hl(+b.dataset.i); });
+    fsec.querySelectorAll('[data-fin]').forEach(function(i){ i.addEventListener('input', render); });
+    document.querySelectorAll('.langs button').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(render,0); }); });
+    render();
+  }
 })();
 </script>
 </body>
