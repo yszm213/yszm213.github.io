@@ -19,7 +19,7 @@
   var views={home:document.getElementById('view-home')};
   CASES.forEach(function(k){ views[k]=document.getElementById('view-'+k); });
   /* Chaque rubrique appartient à un onglet de la nav (4 onglets) */
-  var GROUP={top:'', apropos:'apropos', maintenant:'apropos', ecole:'ecole', perso:'ecole', experiences:'experiences', competences:'experiences', contact:'contact'};
+  var GROUP={top:'', apropos:'apropos', maintenant:'apropos', horsecran:'apropos', ecole:'ecole', perso:'ecole', experiences:'experiences', competences:'experiences', langues:'experiences', contact:'contact'};
   var links=[].slice.call(document.querySelectorAll('.nav-links a, .tabbar a'));
   var secs=[].slice.call(views.home.querySelectorAll('[data-sec]'));
 
