@@ -25,12 +25,18 @@
 
   function setActive(g){ links.forEach(function(a){ var on=a.dataset.go===g; a.classList.toggle('on', on); if(on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); }); }
   function show(name){ Object.keys(views).forEach(function(k){ views[k].hidden=(k!==name); }); }
+  /* Défilement : Lenis (js/fx.js) s'il tourne, sinon natif. Lenis ignore scroll-padding, on passe le décalage de la nav. */
+  function scrollToEl(el, smooth){
+    var L=window.__lenis;
+    if(L){ if(el) L.scrollTo(el, {offset:-parseFloat(getComputedStyle(root).scrollPaddingTop)||0, immediate:!smooth}); else L.scrollTo(0, {immediate:!smooth}); return; }
+    if(el) el.scrollIntoView(); else window.scrollTo(0,0);
+  }
   function route(target){
-    var h=target || location.hash.slice(1);
-    if(CASES.indexOf(h)>=0){ show(h); window.scrollTo(0,0); setActive('ecole'); paint(h); return; }
+    var h=target || location.hash.slice(1), wasHome=!views.home.hidden;
+    if(CASES.indexOf(h)>=0){ show(h); scrollToEl(null, false); setActive('ecole'); paint(h); return; }
     show('home'); paint('top');
     var el=h && h!=='top' ? views.home.querySelector('[data-sec="'+h+'"]') : null;
-    if(el) el.scrollIntoView(); else window.scrollTo(0,0);
+    scrollToEl(el, !!target && wasHome); /* clic sur l'accueil : glisse ; arrivée d'ailleurs : saut direct */
     onScroll();
   }
   document.addEventListener('click', function(e){
@@ -62,10 +68,13 @@
   /* ----- Apparition + compteurs (valeur finale visible sans JS) ----- */
   document.querySelectorAll('[data-dots]').forEach(function(d){
     var n=+d.dataset.dots, h=''; for(var i=0;i<n;i++){ h+='<i style="animation-delay:'+(i*6)+'ms"></i>'; } d.innerHTML=h; });
-  function countUp(el){ if(reduce || el.dataset.done) return; el.dataset.done=1; var to=+el.dataset.to, t0=null;
+  /* Temps mesuré à l'horloge (pas au rythme des images) + minuteur de secours : si rAF est gelé ou ralenti
+     (onglet en arrière-plan), le chiffre final s'affiche quand même. */
+  function countUp(el){ if(reduce || el.dataset.done) return; el.dataset.done=1; var to=+el.dataset.to, t0=performance.now(), end=false;
     var fmt=function(v){ return Math.round(v).toLocaleString(root.lang==='en'?'en-US':'fr-FR'); };
-    function step(t){ if(!t0) t0=t; var p=Math.min(1,(t-t0)/1400), e=1-Math.pow(1-p,3); el.textContent=fmt(to*e); if(p<1) requestAnimationFrame(step); }
-    requestAnimationFrame(step); }
+    function finish(){ end=true; el.textContent=fmt(to); }
+    function step(){ if(end) return; var p=Math.min(1,(performance.now()-t0)/1400); el.textContent=fmt(to*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); else finish(); }
+    requestAnimationFrame(step); setTimeout(finish, 1600); }
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
       e.target.classList.add('inview');
       var k=e.target.getAttribute('data-sec'); if(k && !views.home.hidden) paint(k);

@@ -18,7 +18,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="css/legacy.css">
 <link rel="stylesheet" href="css/site.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script defer src="js/core.js"></script>
+<script defer src="js/fx.js"></script>
 <script defer src="js/maze.js"></script>
 <script defer src="js/regtemp.js"></script>
 </head>
@@ -57,39 +61,97 @@
 
 <!-- ================= ACCUEIL ================= -->
 <main class="wrap view" id="view-home">
-  <header class="hero" data-sec="top">
-    <div class="hero-main">
-    <div class="eyebrow"><span data-l="fr">Portfolio · Élève ingénieur IA &amp; Big Data</span><span data-l="en">Portfolio · AI &amp; Big Data engineering student</span></div>
-    <h1>Yanis<br><em>Zmouli</em></h1>
-    <p class="lede" data-l="fr">Je transforme des données brutes en résultats concrets&nbsp;: du nettoyage au modèle, jusqu'à l'application qui les rend utiles.</p>
-    <p class="lede" data-l="en">I turn raw data into concrete results: from cleaning to modelling, all the way to the app that makes them useful.</p>
-    <div class="status">
-      <span class="pill live"><span data-l="fr">Recherche un stage · juil. → oct. 2027</span><span data-l="en">Looking for an internship · Jul → Oct 2027</span></span>
-      <span class="pill"><span data-l="fr">Puis alternance M2 · 2027-2028 · 3 sem. / 3 sem.</span><span data-l="en">Then a work-study year · 2027-2028 · 3 wks / 3 wks</span></span>
-    </div>
+  <!-- Écran 1 : bento du hero (tuiles A à J) -->
+  <header class="bento b-hero" data-sec="top">
+    <!-- A · Identité -->
+    <div class="tile t-id" data-tile>
+      <div class="mesh" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="t-id-in" data-parallax>
+        <div class="eyebrow"><span data-l="fr">Portfolio · Élève ingénieur IA &amp; Big Data</span><span data-l="en">Portfolio · AI &amp; Big Data engineering student</span></div>
+        <h1 class="split" aria-label="Yanis Zmouli"><span class="w">Yanis</span> <em class="w">Zmouli</em></h1>
+        <p class="lede" data-l="fr">Je transforme des données brutes en résultats concrets&nbsp;: du nettoyage au modèle, jusqu'à l'application qui les rend utiles.</p>
+        <p class="lede" data-l="en">I turn raw data into concrete results: from cleaning to modelling, all the way to the app that makes them useful.</p>
+        <div class="t-id-cta">
+          <a class="btn btn-main" data-magnetic href="CV_Yanis_Zmouli.pdf" target="_blank" rel="noopener"><span data-l="fr">Ouvrir mon CV (PDF) →</span><span data-l="en">Open my CV (PDF, French) →</span></a>
+          <a class="btn btn-ghost" data-magnetic href="#ecole" data-go="ecole"><span data-l="fr">Voir les projets</span><span data-l="en">See the projects</span></a>
+        </div>
+      </div>
     </div>
 
-    <div class="hero-side">
-    <div class="tldr-label"><span data-l="fr">En 30 secondes</span><span data-l="en">In 30 seconds</span></div>
-    <div class="tldr depth">
-      <div><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg>
-        <b><span data-l="fr">Je sais faire parler les données</span><span data-l="en">I make data speak</span></b>
-        <span data-l="fr">J'ai analysé toutes les bornes de recharge publiques de France et prédit leurs caractéristiques avec 90 % de réussite.</span>
-        <span data-l="en">I analysed every public EV charging point in France and predicted their features with 90% accuracy.</span></div>
-      <div><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg>
-        <b><span data-l="fr">Je mène un projet de A à Z</span><span data-l="en">I see projects through</span></b>
-        <span data-l="fr">Des données brutes jusqu'à l'application utilisée par quelqu'un, en équipe ou seul.</span>
-        <span data-l="en">From raw data to an app someone actually uses, in a team or on my own.</span></div>
-      <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/></svg>
-        <b><span data-l="fr">J'apprends vite, et partout</span><span data-l="en">I learn fast, anywhere</span></b>
-        <span data-l="fr">Spark, Scala et Power BI en ce moment, puis un semestre de data science à Séoul.</span>
-        <span data-l="en">Spark, Scala and Power BI right now, then a data science semester in Seoul.</span></div>
+    <!-- B · Photo -->
+    <figure class="tile t-photo" data-tile>
+      <img src="photo.jpg" alt="Yanis Zmouli" fetchpriority="high" data-parallax-img>
+      <figcaption><span data-l="fr">4e année · ISEN Ouest</span><span data-l="en">4th year · ISEN Ouest</span></figcaption>
+    </figure>
+
+    <!-- C · Disponibilité stage (4 mois : juillet → octobre) -->
+    <div class="tile t-dispo" data-tile>
+      <span class="live"><span data-l="fr">Recherche un stage</span><span data-l="en">Looking for an internship</span></span>
+      <b><span data-l="fr">juil. → oct. 2027</span><span data-l="en">Jul → Oct 2027</span></b>
+      <div class="months" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
     </div>
+
+    <!-- D · Alternance (rythme 3 semaines école / 3 semaines entreprise) -->
+    <div class="tile t-alt" data-tile>
+      <span class="k"><span data-l="fr">Puis alternance M2</span><span data-l="en">Then a work-study year</span></span>
+      <b>2027-2028</b>
+      <span class="rythm"><span data-l="fr">3 sem. / 3 sem.</span><span data-l="en">3 wks / 3 wks</span></span>
+      <div class="alt-bar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
     </div>
-    <div class="coords depth">
-      <div><b>ISEN Ouest, Nantes</b>47.21° N · 1.55° W · <span data-l="fr">4e année</span><span data-l="en">4th year (MSc 1)</span></div>
-      <div><b>Hanyang University, Seoul</b>37.56° N · 127.04° E · <span data-l="fr">mars → juin 2027</span><span data-l="en">Mar → Jun 2027</span></div>
-      <div><b><span data-l="fr">Anglais B2</span><span data-l="en">English B2</span></b>TOEIC 855 / 990</div>
+
+    <!-- E · En 30 secondes : onglets qui défilent seuls -->
+    <div class="tile t-tldr" data-tile data-tldr>
+      <div class="k"><span data-l="fr">En 30 secondes</span><span data-l="en">In 30 seconds</span></div>
+      <div class="tldr-tabs" role="tablist">
+        <button type="button" role="tab" aria-selected="true" aria-controls="tl-1" id="tlb-1"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg><span data-l="fr">Je sais faire parler les données</span><span data-l="en">I make data speak</span><i class="prog"></i></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tl-2" id="tlb-2" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17l5-5 4 4 7-8"/><path d="M15 8h5v5"/></svg><span data-l="fr">Je mène un projet de A à Z</span><span data-l="en">I see projects through</span><i class="prog"></i></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tl-3" id="tlb-3" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.5 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.5-3.8-9S9.5 5.5 12 3z"/></svg><span data-l="fr">J'apprends vite, et partout</span><span data-l="en">I learn fast, anywhere</span><i class="prog"></i></button>
+      </div>
+      <div class="tldr-panels">
+        <p role="tabpanel" id="tl-1" aria-labelledby="tlb-1" class="on"><span data-l="fr">J'ai analysé toutes les bornes de recharge publiques de France et prédit leurs caractéristiques avec 90 % de réussite.</span><span data-l="en">I analysed every public EV charging point in France and predicted their features with 90% accuracy.</span></p>
+        <p role="tabpanel" id="tl-2" aria-labelledby="tlb-2"><span data-l="fr">Des données brutes jusqu'à l'application utilisée par quelqu'un, en équipe ou seul.</span><span data-l="en">From raw data to an app someone actually uses, in a team or on my own.</span></p>
+        <p role="tabpanel" id="tl-3" aria-labelledby="tlb-3"><span data-l="fr">Spark, Scala et Power BI en ce moment, puis un semestre de data science à Séoul.</span><span data-l="en">Spark, Scala and Power BI right now, then a data science semester in Seoul.</span></p>
+      </div>
+    </div>
+
+    <!-- F · ISEN -->
+    <div class="tile t-place t-isen" data-tile>
+      <span class="k">ISEN Ouest, Nantes</span>
+      <b><span data-l="fr">4e année</span><span data-l="en">4th year (MSc 1)</span></b>
+      <span class="geo">47.21° N · 1.55° W</span>
+    </div>
+
+    <!-- G · Hanyang -->
+    <div class="tile t-place t-hy" data-tile>
+      <span class="k">Hanyang University, Seoul</span>
+      <b><span data-l="fr">mars → juin 2027</span><span data-l="en">Mar → Jun 2027</span></b>
+      <span class="geo">37.56° N · 127.04° E</span>
+    </div>
+
+    <!-- H · TOEIC -->
+    <div class="tile t-toeic" data-tile>
+      <span class="k"><span data-l="fr">Anglais B2</span><span data-l="en">English B2</span></span>
+      <b><span class="count" data-to="855">855</span><small> / 990</small></b>
+      <span class="gauge" aria-hidden="true"><i></i></span>
+      <span class="geo">TOEIC</span>
+    </div>
+
+    <!-- I · Nantes → Seoul -->
+    <div class="tile t-route" data-tile>
+      <svg viewBox="0 0 300 110" aria-hidden="true" class="route">
+        <path class="arc" id="route-arc" d="M22 88 C 90 -8, 210 -8, 278 74"/>
+        <circle class="pt" cx="22" cy="88" r="5"/><circle class="pt" cx="278" cy="74" r="5"/>
+        <circle class="plane" r="4"><animateMotion dur="5s" repeatCount="indefinite" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines=".45 0 .2 1"><mpath href="#route-arc"/></animateMotion></circle>
+      </svg>
+      <div class="route-l"><b>Nantes → Seoul</b><span><span data-l="fr">Départ pour Séoul · Mars 2027</span><span data-l="en">Moving to Seoul · March 2027</span></span></div>
+    </div>
+
+    <!-- J · Bandeau technos (liste doublée pour une boucle sans couture) -->
+    <div class="tile t-marquee" data-tile>
+      <div class="mq-track">
+        <ul><li>Python</li><li>pandas</li><li>NumPy</li><li>scikit-learn</li><li>SQL</li><li>MySQL</li><li>PostgreSQL</li><li>Apache Spark</li><li>Scala</li><li>Power BI</li><li>Matplotlib</li><li>Seaborn</li><li>C</li><li>STM32</li><li>Java</li><li>JavaScript</li><li>PHP</li><li>Next.js</li><li>React</li><li>Tailwind CSS</li><li>Prisma</li><li>Git</li></ul>
+        <ul aria-hidden="true"><li>Python</li><li>pandas</li><li>NumPy</li><li>scikit-learn</li><li>SQL</li><li>MySQL</li><li>PostgreSQL</li><li>Apache Spark</li><li>Scala</li><li>Power BI</li><li>Matplotlib</li><li>Seaborn</li><li>C</li><li>STM32</li><li>Java</li><li>JavaScript</li><li>PHP</li><li>Next.js</li><li>React</li><li>Tailwind CSS</li><li>Prisma</li><li>Git</li></ul>
+      </div>
     </div>
   </header>
 
