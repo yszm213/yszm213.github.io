@@ -139,6 +139,7 @@ html.lenis, html.lenis body{height:auto}
 /* Placement écran 1 (desktop) */
 .b-hero > .tile{min-height:168px}
 .b-hero > .t-place, .b-hero > .t-toeic, .b-hero > .t-route{min-height:128px}
+.b-hero > .t-marquee{min-height:0; height:64px} /* bandeau fin, une seule ligne */
 .t-id{grid-column:1 / 7; grid-row:span 3}
 .t-dispo{grid-column:7 / 10}
 .t-alt{grid-column:10 / 13}
@@ -453,29 +454,35 @@ html.lenis, html.lenis body{height:auto}
 #view-home > *{grid-column:1 / -1; margin:0; min-width:0}
 /* Chaque rangée : toutes les tuiles finissent à la même hauteur ; le contenu se répartit dans la hauteur disponible */
 #view-home > section{align-self:stretch; display:flex; flex-direction:column}
-#view-home > section > .body, .hobbies, .langs-list{flex:1}
+#view-home > section > .body, .hobbies, .rolls{flex:1}
 .body.about{align-content:center}
 .body.skills{align-content:center}
 .body.now{display:flex; flex-direction:column}
 #view-home .now ul{flex:1; grid-auto-rows:1fr} /* cartes réparties sur toute la hauteur de la tuile */
 .now li{justify-content:center}
+/* Carnet de bord : le tableau occupe toute la hauteur de la tuile, ses lignes se répartissent (pas de vide en bas) */
 [data-sec="experiences"] > .body{display:flex; flex-direction:column}
-[data-sec="experiences"] .edu{flex:1; display:flex; flex-direction:column}
-#view-home [data-sec="experiences"] .edu .list{flex:1; grid-auto-rows:1fr}
-[data-sec="experiences"] .edu .item{align-content:center}
-.langs-list li:not(:has(small)) b{grid-row:1 / 3}
+[data-sec="experiences"] .log-wrap{flex:1; display:flex}
+[data-sec="experiences"] table.log{height:100%}
+[data-sec="experiences"] .log tbody td{vertical-align:middle}
+/* Formation : cartes à la hauteur de leur contenu, centrées dans la tuile */
+.t-edu .edu{display:flex; flex-direction:column; justify-content:center}
+.t-edu .item{grid-template-columns:110px 1fr; gap:4px 18px; padding:14px 18px}
+.t-edu .item p{margin:2px 0 0}
+@media (max-width:520px){ .t-edu .item{grid-template-columns:1fr} }
 @media (min-width:1100px){
   /* Profil : À propos + Hors écran à gauche, En ce moment sur 2 rangées à droite.
      Parcours : Carnet de bord sur 2 rangées à gauche, Compétences + Langues & permis à droite. */
   #view-home > [data-sec="apropos"], #view-home > [data-sec="horsecran"]{grid-column:1 / 7}
   #view-home > [data-sec="maintenant"]{grid-column:7 / 13; grid-row:span 2}
   #view-home > [data-sec="experiences"]{grid-column:1 / 7; grid-row:span 2}
-  #view-home > [data-sec="competences"], #view-home > [data-sec="langues"]{grid-column:7 / 13}
+  #view-home > [data-sec="formation"], #view-home > [data-sec="skillsroll"]{grid-column:7 / 13}
+  #view-home > [data-sec="competences"]{grid-column:1 / -1}
   #view-home > [data-sec="contact"]{grid-column:1 / -1}
   .about{grid-template-columns:1fr 170px; gap:28px}
   .now ul{height:auto; grid-auto-rows:auto}
   .log-wrap{height:auto}
-  .skills{flex:none; grid-auto-rows:auto; grid-template-columns:1fr 1fr}
+  .skills{flex:none; grid-auto-rows:auto; grid-template-columns:repeat(4, minmax(0,1fr))}
   .skills ul{flex:none; justify-content:flex-start}
   .contact{flex:none; grid-auto-rows:auto; grid-template-columns:repeat(3, minmax(0,1fr))}
 }
@@ -526,16 +533,25 @@ html.lenis, html.lenis body{height:auto}
 @media (max-width:1399px) and (min-width:1100px){ .hobbies{grid-template-columns:repeat(2, minmax(0,1fr))} }
 @media (max-width:640px){ .hobbies{grid-template-columns:repeat(2, minmax(0,1fr))} }
 
-/* ===== Langues & permis ===== */
-.t-lang .sec-head{margin-bottom:18px}
-.langs-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; justify-content:space-around; gap:10px}
-.langs-list li{display:grid; grid-template-columns:44px minmax(0,1fr) minmax(90px,32%); grid-template-rows:auto auto; column-gap:14px; align-items:center;
-  padding:12px 14px; border-radius:16px; border:1px solid var(--faint); background:rgba(255,255,255,.03)}
-.langs-list .lg{grid-row:1 / 3; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; font:600 .78rem var(--mono); color:var(--bg);
-  background:linear-gradient(135deg,var(--accent),var(--accent-2))}
-.langs-list .lg svg{width:22px; height:22px; fill:none; stroke:var(--bg); stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
-.langs-list b{font-weight:600}
-.langs-list small{grid-column:2; font-family:var(--mono); font-size:.68rem; color:var(--muted)}
-.langs-list .lvl{grid-column:3; grid-row:1 / 3; height:8px; border-radius:4px; background:rgba(255,255,255,.08); overflow:hidden}
-.langs-list .lvl i{display:block; height:100%; width:calc(var(--v) * 100%); border-radius:4px; background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+/* ===== Hard skills qui défilent (3 lignes, sens alternés, pause au survol) ===== */
+.t-roll .sec-head{margin-bottom:14px}
+.rolls{display:flex; flex-direction:column; justify-content:center; gap:12px}
+.roll{display:grid; gap:6px}
+.roll-k{font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:var(--tag)}
+.roll-view{overflow:hidden; -webkit-mask:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask:linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent)}
+.roll-track{display:flex; width:max-content; animation:mq 38s linear infinite}
+.roll.rev .roll-track{animation-direction:reverse; animation-duration:30s}
+.t-roll:hover .roll-track{animation-play-state:paused}
+.roll-track ul{display:flex; gap:8px; list-style:none; margin:0; padding:0 8px 0 0}
+.roll-track li{white-space:nowrap; font-size:.88rem; padding:7px 14px; border-radius:999px; border:1px solid var(--faint); background:rgba(255,255,255,.04); color:var(--soft)}
+@media (prefers-reduced-motion: reduce){ .roll-track{animation:none} .roll-view{overflow-x:auto} }
+
+/* ===== Survol commun : légère élévation + bordure lumineuse ===== */
+.now li, .skills > div, .contact > div, .hobbies li{transition:transform .35s var(--ease), border-color .35s, box-shadow .35s, background .35s}
+@media (hover:hover){
+  .now li:hover, .skills > div:hover, .contact > div:hover, .hobbies li:hover{transform:translateY(-3px); border-color:rgba(143,162,255,.55);
+    box-shadow:0 0 0 1px rgba(94,230,208,.18), 0 14px 34px -14px rgba(94,230,208,.45); background:rgba(255,255,255,.05)}
+}
+.now li:active, .skills > div:active, .contact > div:active{transform:translateY(-1px)}
+@media (prefers-reduced-motion: reduce){ .now li, .skills > div, .contact > div, .hobbies li{transition:none} .now li:hover, .skills > div:hover, .contact > div:hover, .hobbies li:hover{transform:none} }
 
