@@ -1,0 +1,113 @@
+/* Portfolio Yanis Zmouli · « Verre vivant »
+   Fond sombre, teinte qui suit la rubrique visible, verre réservé à la nav et aux cartes projet. */
+
+/* ===== Tokens ===== */
+@property --c1{syntax:"<color>"; inherits:true; initial-value:#3B4BFF}
+@property --c2{syntax:"<color>"; inherits:true; initial-value:#12B5A0}
+@property --c3{syntax:"<color>"; inherits:true; initial-value:#A23BFF}
+:root{
+  --bg:#07080D; --ink:#F2F3F8; --soft:#E6E8F1; --muted:#C4C9DA; --faint:rgba(255,255,255,.08); --edge:rgba(255,255,255,.16);
+  --panel:rgba(12,14,22,.72); --glass:linear-gradient(135deg, rgba(255,255,255,.09), rgba(255,255,255,.03)), rgba(8,10,18,.55);
+  --accent:#8FA2FF; --accent-2:#5EE6D0; --tag:#7FF0DE; --warn:#FFC873; --warn-bg:rgba(255,200,115,.08);
+  --display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --text:"Manrope", "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --nav-h:64px; --tab-h:0px;
+  --c1:#3B4BFF; --c2:#12B5A0; --c3:#A23BFF;
+  color-scheme:dark;
+  transition:--c1 1.4s var(--ease), --c2 1.4s var(--ease), --c3 1.4s var(--ease);
+}
+
+/* ===== Base ===== */
+*{box-sizing:border-box}
+/* Ancres : hauteur de la nav (12 px de marge haute + barre) + 16 px d'air */
+html{scroll-padding-top:calc(var(--nav-h) + 28px)}
+body{background:var(--bg); color:var(--ink); font-family:var(--text); font-size:16px; line-height:1.6; overflow-x:hidden;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom, 0px))}
+a{color:inherit}
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:6px}
+html[data-lang="fr"] [data-l="en"], html[data-lang="en"] [data-l="fr"]{display:none !important}
+.view[hidden]{display:none !important}
+.wrap{max-width:1180px; margin:0 auto; position:relative; z-index:1}
+.wrap.case{max-width:1040px}
+.skip{position:absolute; left:16px; top:-60px; z-index:30; padding:10px 14px; border-radius:10px; background:var(--ink); color:var(--bg); font-weight:600; text-decoration:none}
+.skip:focus{top:12px}
+
+/* ===== Fond : 3 dégradés radiaux, déplacés par transform (pas de flou, pas de canvas) ===== */
+.bg{position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden}
+.bg i{position:absolute; border-radius:50%; opacity:.34; will-change:transform}
+.bg i:nth-child(1){width:70vmax; height:70vmax; left:-22vmax; top:-26vmax; background:radial-gradient(circle, var(--c1), transparent 62%); animation:drift1 26s var(--ease) infinite alternate}
+.bg i:nth-child(2){width:60vmax; height:60vmax; right:-24vmax; top:10vh; background:radial-gradient(circle, var(--c2), transparent 62%); animation:drift2 32s var(--ease) infinite alternate}
+.bg i:nth-child(3){width:56vmax; height:56vmax; left:14vw; bottom:-30vmax; background:radial-gradient(circle, var(--c3), transparent 62%); animation:drift3 38s var(--ease) infinite alternate}
+@keyframes drift1{to{transform:translate(16vw,18vh) scale(1.1)}}
+@keyframes drift2{to{transform:translate(-18vw,-12vh) scale(.92)}}
+@keyframes drift3{to{transform:translate(12vw,-24vh) scale(1.08)}}
+.progress{position:fixed; left:0; top:0; height:3px; width:100%; z-index:20; transform-origin:left; transform:scaleX(0);
+  background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3))}
+
+/* ===== Surfaces ===== */
+/* Panneau simple (sans flou) pour les sections ; verre flouté seulement nav + cartes projet */
+section, .pill, .stack span, .cta, .chip{background:var(--glass); border:1px solid var(--edge);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14), 0 20px 50px -24px rgba(0,0,0,.6)}
+.top .bar-in, .tabbar, .feature{background:var(--glass); border:1px solid var(--edge);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18), 0 20px 50px -20px rgba(0,0,0,.6)}
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  .top .bar-in, .tabbar, .feature{-webkit-backdrop-filter:blur(18px) saturate(150%); backdrop-filter:blur(18px) saturate(150%)}
+}
+section{padding:44px clamp(20px,4vw,48px); margin-block:22px; border-radius:30px; position:relative; scroll-margin-top:0}
+/* Carte projet : verre arrondi, un seul cadre */
+.feature{position:relative; padding:clamp(22px,4vw,38px); border-radius:26px; margin-bottom:28px; transition:box-shadow .4s, border-color .4s}
+.feature:hover{border-color:rgba(255,255,255,.24); box-shadow:inset 0 1px 0 rgba(255,255,255,.25), 0 40px 80px -30px rgba(80,100,255,.45)}
+
+/* ===== Navigation haute ===== */
+.top{position:sticky; top:0; z-index:10; padding-top:max(12px, env(safe-area-inset-top, 0px)); margin:0 -4px 18px}
+/* Masque le contenu qui défile dans la marge au-dessus de la barre et derrière elle */
+.top::before{content:""; position:absolute; z-index:-1; left:-16px; right:-16px; top:0; bottom:-10px; pointer-events:none;
+  background:linear-gradient(var(--bg) 55%, rgba(7,8,13,0))}
+.top .bar-in{display:flex; align-items:center; gap:12px; height:var(--nav-h); padding:0 10px 0 20px; border-radius:20px}
+.mark{font-family:var(--display); font-weight:700; font-size:1.3rem; text-decoration:none; letter-spacing:-.02em; white-space:nowrap}
+.mark i{font-style:normal; background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.nav-links{list-style:none; margin:0 auto; padding:0; display:flex; gap:4px}
+.nav-links a{display:block; font-size:.9rem; font-weight:500; text-decoration:none; color:var(--muted); padding:9px 16px; border-radius:999px; transition:color .25s, background .25s}
+.nav-links a:hover{color:var(--ink); background:rgba(255,255,255,.07)}
+.nav-links a.on{color:var(--bg); background:var(--ink)}
+.nav-r{display:flex; align-items:center; gap:10px; margin-left:auto}
+.avail{font-family:var(--mono); font-size:.72rem; color:var(--muted); white-space:nowrap}
+.avail::before, .pill.live::before{content:""; display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent-2); margin-right:8px; box-shadow:0 0 12px var(--accent-2); animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.nav-cv{display:inline-flex; align-items:center; gap:6px; min-height:40px; font-weight:600; font-size:.85rem; text-decoration:none; padding:0 16px; border-radius:999px; color:var(--bg);
+  background:linear-gradient(90deg,var(--accent),var(--accent-2)); white-space:nowrap}
+.nav-cv svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.langs{display:flex; border-radius:999px; padding:3px; background:rgba(255,255,255,.06); border:1px solid var(--faint)}
+.langs button{font:500 .74rem/1 var(--mono); background:none; color:var(--muted); border:0; min-width:40px; min-height:34px; border-radius:999px; cursor:pointer; transition:background .25s, color .25s}
+.langs button[aria-pressed="true"]{background:var(--ink); color:var(--bg)}
+
+/* ===== Barre d'onglets mobile ===== */
+.tabbar{display:none}
+@media (max-width:899px){
+  :root{--nav-h:56px; --tab-h:72px}
+  .nav-links, .avail{display:none}
+  .top .bar-in{padding:0 8px 0 16px}
+  .nav-cv{padding:0 12px; min-height:38px}
+  .tabbar{display:grid; grid-template-columns:repeat(4,1fr); position:fixed; z-index:10; left:10px; right:10px;
+    bottom:max(10px, env(safe-area-inset-bottom, 0px)); height:62px; padding:4px; border-radius:22px}
+  .tabbar a{display:grid; place-items:center; align-content:center; gap:2px; min-height:44px; border-radius:16px; text-decoration:none; color:var(--muted);
+    font-size:.68rem; font-weight:600; transition:color .25s, background .25s; -webkit-tap-highlight-color:transparent}
+  .tabbar svg{width:22px; height:22px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+  .tabbar a.on{color:var(--ink); background:rgba(255,255,255,.1)}
+  .tabbar a.on svg{stroke:var(--accent-2)}
+  .tabbar a:active{transform:scale(.94)}
+}
+@media (max-width:380px){ .nav-cv span{display:none} }
+
+/* ===== Retour tactile commun ===== */
+.more:active, .cta:active, .nav-cv:active, .langs button:active{transform:scale(.96)}
+
+/* ===== Mouvement réduit ===== */
+@media (prefers-reduced-motion: reduce){
+  :root{transition:none}
+  .bg i, .avail::before, .pill.live::before{animation:none}
+  *{scroll-behavior:auto !important}
+}
