@@ -23,6 +23,16 @@
   var links=[].slice.call(document.querySelectorAll('.nav-links a, .tabbar a'));
   var secs=[].slice.call(views.home.querySelectorAll('[data-sec]'));
 
+  /* Les conteneurs du hero et des projets sont en display:contents (leurs tuiles vivent dans la grille unique de la page) :
+     ils n'ont pas de boîte, on se sert de leurs tuiles. */
+  function isContents(el){ return getComputedStyle(el).display==='contents'; }
+  function scrollTarget(el){ return el && isContents(el) ? el.firstElementChild : el; }
+  function rectOf(el){
+    if(!isContents(el)) return el.getBoundingClientRect();
+    var top=Infinity, bottom=-Infinity;
+    [].forEach.call(el.children, function(c){ var r=c.getBoundingClientRect(); if(r.height){ top=Math.min(top,r.top); bottom=Math.max(bottom,r.bottom); } });
+    return {top:top, bottom:bottom};
+  }
   function setActive(g){ links.forEach(function(a){ var on=a.dataset.go===g; a.classList.toggle('on', on); if(on) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); }); }
   function show(name){ Object.keys(views).forEach(function(k){ views[k].hidden=(k!==name); }); }
   /* Défilement : Lenis (js/fx.js) s'il tourne, sinon natif. Lenis ignore scroll-padding, on passe le décalage de la nav. */
@@ -36,7 +46,7 @@
     if(CASES.indexOf(h)>=0){ show(h); scrollToEl(null, false); setActive('ecole'); paint(h); return; }
     show('home'); paint('top');
     var el=h && h!=='top' ? views.home.querySelector('[data-sec="'+h+'"]') : null;
-    scrollToEl(el, !!target && wasHome); /* clic sur l'accueil : glisse ; arrivée d'ailleurs : saut direct */
+    scrollToEl(scrollTarget(el), !!target && wasHome); /* clic sur l'accueil : glisse ; arrivée d'ailleurs : saut direct */
     onScroll();
   }
   function navigate(t){
@@ -73,8 +83,9 @@
     if(views.home.hidden) return;
     /* Position à l'écran, pas ordre du DOM : la grille bento remonte certaines tuiles */
     var probe=innerHeight*0.35, cur='top', best=-Infinity;
-    secs.forEach(function(s){ var r=s.getBoundingClientRect(); if(r.top<=probe && r.bottom>probe && r.top>best){ best=r.top; cur=s.dataset.sec; } });
-    if(best===-Infinity) return; /* entre deux tuiles : on garde l'onglet courant */
+    secs.forEach(function(s){ var r=rectOf(s); if(r.top<=probe && r.bottom>probe && r.top>best){ best=r.top; cur=s.dataset.sec; } });
+    if(scrollY+innerHeight>=root.scrollHeight-4) cur='contact'; /* bas de page : Contact ne peut pas monter jusqu'à la ligne de détection */
+    else if(best===-Infinity) return; /* entre deux tuiles : on garde l'onglet courant */
     setActive(GROUP[cur]||'');
   }
   window.addEventListener('scroll', onScroll, {passive:true});
@@ -96,11 +107,15 @@
     function finish(){ end=true; el.textContent=fmt(to); }
     function step(){ if(end) return; var p=Math.min(1,(performance.now()-t0)/1400); el.textContent=fmt(to*(1-Math.pow(1-p,3))); if(p<1) requestAnimationFrame(step); else finish(); }
     requestAnimationFrame(step); setTimeout(finish, 1600); }
+  /* Teinte : on observe chaque rubrique, ou les tuiles d'un conteneur sans boîte */
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return;
       e.target.classList.add('inview');
-      var k=e.target.getAttribute('data-sec'); if(k && !views.home.hidden) paint(k);
-      e.target.querySelectorAll('.count').forEach(countUp); }); }, {rootMargin:'-40% 0px -45% 0px'});
-  document.querySelectorAll('[data-sec], .case section').forEach(function(el){ io.observe(el); });
+      var s=e.target.closest('[data-sec]'), k=s && s.getAttribute('data-sec'); if(k && !views.home.hidden) paint(k); }); }, {rootMargin:'-40% 0px -45% 0px'});
+  document.querySelectorAll('[data-sec], .case section').forEach(function(el){
+    if(el.matches('[data-sec]') && isContents(el)) [].forEach.call(el.children, function(c){ io.observe(c); }); else io.observe(el); });
+  /* Compteurs : chacun démarre quand il entre à l'écran */
+  var ioc=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); ioc.unobserve(e.target); } }); }, {rootMargin:'0px 0px -12% 0px'});
+  document.querySelectorAll('.count').forEach(function(c){ ioc.observe(c); });
 
   /* ----- Barre de progression ----- */
   var bar=document.querySelector('.progress');

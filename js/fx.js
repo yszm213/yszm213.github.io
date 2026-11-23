@@ -35,7 +35,7 @@
   /* ----- Nom découpé en lettres (le h1 garde son aria-label) ----- */
   document.querySelectorAll('h1.split').forEach(function(h){
     h.querySelectorAll('.w').forEach(function(w){
-      w.setAttribute('aria-hidden','true');
+      w.setAttribute('aria-hidden','true'); w.dataset.txt=w.textContent;
       w.innerHTML=w.textContent.split('').map(function(c){ return '<span class="ch">'+c+'</span>'; }).join('');
     });
     h.classList.add('is-split');
@@ -59,10 +59,13 @@
     var tiles=hero.querySelectorAll('[data-tile]');
     var tl=gsap.timeline({defaults:{ease:'power3.out'}});
     tl.from(tiles, {opacity:0, y:46, scale:.94, filter:'blur(14px)', duration:1, stagger:{each:.07, from:'start'}, clearProps:'filter'})
-      .from(hero.querySelectorAll('h1 .ch'), {yPercent:115, rotationX:-90, opacity:0, filter:'blur(8px)', duration:.9, stagger:.05, clearProps:'filter'}, .25)
+      /* Apparition sans masque ni 3D (opacity + translateY + flou) ; à la fin, les lettres redeviennent des mots simples :
+         plus aucune transformation sur le nom à l'état final */
+      .from(hero.querySelectorAll('h1 .ch'), {opacity:0, y:36, filter:'blur(10px)', duration:.8, stagger:.05, clearProps:'all',
+        onComplete:function(){ hero.querySelectorAll('h1 .w').forEach(function(w){ w.textContent=w.dataset.txt; }); hero.querySelector('h1').classList.remove('is-split'); }}, .25)
       .from(hero.querySelectorAll('.t-id .eyebrow, .t-id .lede, .t-id-cta .btn'), {opacity:0, y:18, duration:.7, stagger:.08}, .7)
       .from(hero.querySelectorAll('.months i, .alt-bar i, .gauge i'), {scaleX:0, duration:.6, stagger:.06, ease:'power2.out'}, .8)
-      .from(hero.querySelector('h1 .avatar'), {scale:0, rotation:-40, opacity:0, duration:.9, ease:'back.out(1.8)'}, .55);
+      .from(hero.querySelector('.id-top .avatar'), {scale:0, rotation:-40, opacity:0, duration:.9, ease:'back.out(1.8)', clearProps:'transform'}, .55);
   }
 
   /* ----- Tuiles des autres écrans : cascade au scroll (fade, scale, flou → net) ----- */
@@ -79,7 +82,7 @@
 
   /* ----- Parallax léger du hero ----- */
   if(ST && hero){
-    var sc={trigger:hero, start:'top top', end:'bottom top', scrub:true};
+    var sc={trigger:hero.querySelector('.t-id'), start:'top top', end:'bottom top', scrub:true}; /* .b-hero n'a pas de boîte (display:contents) */
     gsap.to(hero.querySelector('[data-parallax]'), {y:-70, ease:'none', scrollTrigger:sc});
     gsap.to(hero.querySelector('.mesh'), {y:120, ease:'none', scrollTrigger:sc});
   }
