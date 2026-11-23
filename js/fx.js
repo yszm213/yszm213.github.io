@@ -62,7 +62,7 @@
       .from(hero.querySelectorAll('h1 .ch'), {yPercent:115, rotationX:-90, opacity:0, filter:'blur(8px)', duration:.9, stagger:.05, clearProps:'filter'}, .25)
       .from(hero.querySelectorAll('.t-id .eyebrow, .t-id .lede, .t-id-cta .btn'), {opacity:0, y:18, duration:.7, stagger:.08}, .7)
       .from(hero.querySelectorAll('.months i, .alt-bar i, .gauge i'), {scaleX:0, duration:.6, stagger:.06, ease:'power2.out'}, .8)
-      .from(hero.querySelector('.t-photo img'), {scale:1.4, duration:1.6, ease:'power2.out'}, 0);
+      .from(hero.querySelector('h1 .avatar'), {scale:0, rotation:-40, opacity:0, duration:.9, ease:'back.out(1.8)'}, .55);
   }
 
   /* ----- Tuiles des autres écrans : cascade au scroll (fade, scale, flou → net) ----- */
@@ -82,7 +82,6 @@
     var sc={trigger:hero, start:'top top', end:'bottom top', scrub:true};
     gsap.to(hero.querySelector('[data-parallax]'), {y:-70, ease:'none', scrollTrigger:sc});
     gsap.to(hero.querySelector('.mesh'), {y:120, ease:'none', scrollTrigger:sc});
-    gsap.fromTo(hero.querySelector('[data-parallax-img]'), {yPercent:-4}, {yPercent:8, ease:'none', immediateRender:false, scrollTrigger:sc});
   }
 
   /* ----- Tilt 3D + spotlight ----- */
