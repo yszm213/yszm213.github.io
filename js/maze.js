@@ -19,7 +19,9 @@
     edge:['Bord du plateau : impossible d’avancer.','Edge of the board: can’t go further.'], bot:['Un autre robot bloque le passage.','Another robot is in the way.'],
     hole:['Chute dans un trou… Le robot est éliminé.','Fell into a hole… The robot is out.'], sand:['Sable mouvant : bloqué pendant 2 tours.','Quicksand: stuck for 2 turns.'],
     stuckm:['Toujours coincé dans le sable…','Still stuck in the sand…'], portal:['Téléportation par le portail !','Teleported through the portal!'], ok:['Déplacement effectué.','Moved.'], turn:['Le robot pivote.','The robot turns.'], dead:['Le robot rouge est éliminé. Recommencez !','The red robot is out. Restart!']};
-  function say(k){ var en=document.documentElement.getAttribute('data-lang')==='en'; document.getElementById('maze-log').textContent=msgs[k][en?1:0]; }
+  var last='start';
+  function say(k){ last=k; var en=document.documentElement.getAttribute('data-lang')==='en'; document.getElementById('maze-log').textContent=msgs[k][en?1:0]; }
+  document.addEventListener('langchange', function(){ say(last); }); /* le journal change de langue tout de suite */
   var D=[[1,0],[0,1],[-1,0],[0,-1]];
   function step(b,dir){ var nx=b.x+D[dir][0], ny=b.y+D[dir][1];
     if(nx<0||ny<0||nx>=N||ny>=N) return 'edge'; var k=kind(nx,ny); if(k==='w') return 'wall';

@@ -16,7 +16,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="css/legacy.css">
 <link rel="stylesheet" href="css/site.css">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -170,7 +169,7 @@
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">En ce moment</span><span data-l="en">Now</span></div>
       <h2><span data-l="fr">Ce que j'apprends et ce qui se prépare</span><span data-l="en">What I'm learning and what's coming</span></h2></div>
     <div class="body now">
-      <ul class="depth">
+      <ul>
         <li><h3>Apache Spark</h3><span class="chip learn"><span data-l="fr">En apprentissage</span><span data-l="en">Learning</span></span>
           <p data-l="fr">Traiter des volumes de données qui ne tiennent plus sur une machine. Je refais une partie de MaStation en PySpark pour comparer avec pandas.</p>
           <p data-l="en">Processing data too large for a single machine. I'm rebuilding part of MaStation in PySpark to compare it with pandas.</p></li>
@@ -224,7 +223,7 @@
       <h3><span data-l="fr">MaStation&nbsp;: les bornes de recharge de France, analysées et prédites</span><span data-l="en">MaStation: France's EV charging points, analysed and predicted</span></h3>
       <p data-l="fr">À partir du jeu de données national des bornes IRVE, nous avons construit toute la chaîne&nbsp;: nettoyage, base MySQL, clustering, modèles de prédiction et application web avec carte interactive.</p>
       <p data-l="en">Starting from France's national EV charging dataset, we built the whole pipeline: cleaning, a MySQL database, clustering, prediction models and a web app with an interactive map.</p>
-      <div class="stage swipe" data-stage><figure class="browser s-main"><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-accueil.webp" alt="Accueil de l'application MaStation" loading="lazy" decoding="async"></figure><figure class="browser s-front"><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-pred-puiss.webp" alt="Prédiction de la puissance d'une borne par le modèle" loading="lazy" decoding="async"></figure></div>
+      <div class="stage swipe"><figure class="browser s-main"><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-accueil.webp" alt="Accueil de l'application MaStation" loading="lazy" decoding="async"></figure><figure class="browser s-front"><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-pred-puiss.webp" alt="Prédiction de la puissance d'une borne par le modèle" loading="lazy" decoding="async"></figure></div>
       <div class="stack"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>MySQL</span><span>PHP</span><span>JavaScript</span><span>Git</span></div>
       <a class="more" href="#mastation" data-go="mastation"><span data-l="fr">Lire l'étude de cas →</span><span data-l="en">Read the case study →</span></a>
     </article>
@@ -298,7 +297,7 @@
       <h3><span data-l="fr">Robot Maze&nbsp;: un jeu de plateau où les robots se pilotent avec des cartes</span><span data-l="en">Robot Maze: a board game where robots are driven by cards</span></h3>
       <p data-l="fr">Jeu multijoueur en Python&nbsp;: chaque joueur programme son robot avec des cartes d'action sur un plateau piégé. Le dernier robot en vie gagne. Jouable directement sur la page du projet.</p>
       <p data-l="en">A multiplayer game in Python: each player programs their robot with action cards on a trapped board. The last robot standing wins. Playable right on the project page.</p>
-      <div class="mstage" data-stage><img class="mboard" src="img/maze-board.webp" alt="Plateau de Robot Maze avec ses pièges et ses 4 robots" loading="lazy"><img class="mcard" src="img/maze-F1.webp" alt="Carte F1" loading="lazy"><img class="mcard" src="img/maze-F2.webp" alt="Carte F2" loading="lazy"><img class="mcard" src="img/maze-F3.webp" alt="Carte F3" loading="lazy"><img class="mcard" src="img/maze-L.webp" alt="Carte L" loading="lazy"><img class="mcard" src="img/maze-R.webp" alt="Carte R" loading="lazy"></div>
+      <div class="mstage"><img class="mboard" src="img/maze-board.webp" alt="Plateau de Robot Maze avec ses pièges et ses 4 robots" loading="lazy"><img class="mcard" src="img/maze-F1.webp" alt="Carte F1" loading="lazy"><img class="mcard" src="img/maze-F2.webp" alt="Carte F2" loading="lazy"><img class="mcard" src="img/maze-F3.webp" alt="Carte F3" loading="lazy"><img class="mcard" src="img/maze-L.webp" alt="Carte L" loading="lazy"><img class="mcard" src="img/maze-R.webp" alt="Carte R" loading="lazy"></div>
       <div class="stack"><span>Python</span><span>PySide6</span><span>Turtle</span><span>Pygame</span><span>JSON</span></div>
       <a class="more" href="#robotmaze" data-go="robotmaze"><span data-l="fr">Jouer et voir le projet →</span><span data-l="en">Play and see the project →</span></a>
     </article>
@@ -353,7 +352,7 @@
       <h3><span data-l="fr">Le site du cabinet de cardiologie du Dr Zmouli</span><span data-l="en">A website for Dr Zmouli's cardiology practice</span></h3>
       <p data-l="fr">Un site réalisé pour un cabinet de cardiologie&nbsp;: informations patients, prise de rendez-vous, glossaire médical et outils de prévention interactifs, codé en HTML, CSS et JavaScript sans framework.</p>
       <p data-l="en">A website made for a cardiology practice: patient information, appointment booking, a medical glossary and interactive prevention tools, built in HTML, CSS and JavaScript with no framework.</p>
-      <div class="stage wide" data-stage>
+      <div class="stage wide">
         <figure class="browser s-wide"><div class="bar"><i></i><i></i><i></i></div><img src="img/drzm-accueil.webp?v=2" alt="Accueil du site du cabinet du Dr Zmouli" loading="lazy" decoding="async"><img class="dark" src="img/drzm-sombre.webp?v=2" alt="" loading="lazy" decoding="async"></figure>
         <figure class="phone"><img src="img/drzm-mobile.webp?v=2" alt="Calculateur d'IMC sur téléphone" loading="lazy" decoding="async"></figure>
       </div>
@@ -377,7 +376,7 @@
       <div class="log-wrap">
         <table class="log">
           <thead><tr><th>Date</th><th><span data-l="fr">Rôle · structure</span><span data-l="en">Role · organisation</span></th><th><span data-l="fr">Lieu</span><span data-l="en">Place</span></th><th>Type</th></tr></thead>
-          <tbody class="depth">
+          <tbody>
             <tr><td class="d">07 / 2025</td><td class="r"><b><span data-l="fr">Stagiaire technicien</span><span data-l="en">Technician intern</span> · Thibaud</b>
               <span data-l="fr">Installation photovoltaïque, maintenance thermique, climatisation, électricité du bâtiment.</span>
               <span data-l="en">Solar panel installation, heating maintenance, air conditioning, building electrics.</span></td><td class="k">Pornic</td><td class="k"><span data-l="fr">Stage</span><span data-l="en">Internship</span></td></tr>
@@ -396,7 +395,7 @@
   <section data-sec="formation" class="t-edu">
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Formation</span><span data-l="en">Education</span></div></div>
     <div class="body edu">
-      <div class="list depth">
+      <div class="list">
         <div class="item"><div class="d">2026 – 27</div><div><h3><span data-l="fr">ISEN Ouest · cycle ingénieur, 4e année</span><span data-l="en">ISEN Ouest · engineering degree, 4th year (MSc 1)</span></h3>
           <p data-l="fr">Spécialisation Intelligence Artificielle &amp; Big Data.</p><p data-l="en">Specialisation in Artificial Intelligence &amp; Big Data.</p></div></div>
         <div class="item"><div class="d">2027</div><div><h3><span data-l="fr">Hanyang University · semestre d'échange</span><span data-l="en">Hanyang University · exchange semester</span></h3>
@@ -418,7 +417,7 @@
 
   <section data-sec="competences">
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Compétences</span><span data-l="en">Skills</span></div><h2>Hard skills</h2></div>
-    <div class="body skills depth">
+    <div class="body skills">
       <div><h3>Data &amp; IA</h3><ul>
         <li>Machine learning <small><span data-l="fr">clustering · classif. · régression</span><span data-l="en">clustering · classif. · regression</span></small></li>
         <li>scikit-learn <small>MaStation</small></li>
@@ -442,10 +441,10 @@
     <div class="sec-head"><div class="eyebrow">Contact</div>
       <h2><span data-l="fr">Un stage, une alternance, une question&nbsp;? Écrivez-moi.</span><span data-l="en">An internship, a work-study placement, a question? Write to me.</span></h2></div>
     <div class="body">
-      <dl class="contact depth">
+      <dl class="contact">
         <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/yanis-zmouli" target="_blank" rel="noopener">linkedin.com/in/yanis-zmouli</a></dd></div>
         <div><dt>GitHub</dt><dd><a href="https://github.com/yszm213" target="_blank" rel="noopener">github.com/yszm213</a></dd></div>
-        <div><dt>E-mail</dt><dd>yanis.zmouli@isen-ouest.yncrea.fr</dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:yanis.zmouli@isen-ouest.yncrea.fr">yanis.zmouli@isen-ouest.yncrea.fr</a></dd></div>
         <div><dt><span data-l="fr">Basé à</span><span data-l="en">Based in</span></dt><dd>Nantes, France · <span data-l="fr">Permis B</span><span data-l="en">Driving licence</span></dd></div>
         <div><dt><span data-l="fr">Langues</span><span data-l="en">Languages</span></dt><dd><span data-l="fr">Français (natif) · Anglais B2, TOEIC 855</span><span data-l="en">French (native) · English B2, TOEIC 855</span></dd></div>
         <div><dt><span data-l="fr">Intérêts</span><span data-l="en">Interests</span></dt><dd><span data-l="fr">Simulation de vol · handball · football · natation</span><span data-l="en">Flight simulation · handball · football · swimming</span></dd></div>
@@ -474,7 +473,7 @@
 
   <section>
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Démarche</span><span data-l="en">Approach</span></div><h2><span data-l="fr">Quatre semaines, quatre étapes</span><span data-l="en">Four weeks, four stages</span></h2></div>
-    <div class="body steps depth">
+    <div class="body steps">
       <div class="step"><div><h3><span data-l="fr">Base de données</span><span data-l="en">Database</span></h3>
         <p data-l="fr">Modélisation MCD (enseignes, stations, points de charge) et création de la base MySQL à partir du fichier national.</p>
         <p data-l="en">Entity-relationship model (operators, stations, charging points) and a MySQL database built from the national file.</p></div></div>
@@ -492,14 +491,14 @@
 
   <section>
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">L'application</span><span data-l="en">The app</span></div><h2><span data-l="fr">Ce que voit l'utilisateur</span><span data-l="en">What the user sees</span></h2></div>
-    <div class="body"><div class="shots depth"><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-accueil.webp" alt="Accueil MaStation"><figcaption><span data-l="fr">Accueil&nbsp;: les chiffres clés de la base en un coup d'œil.</span><span data-l="en">Home: the database's key figures at a glance.</span></figcaption></figure><div class="shots two depth"><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-carte.webp" alt="Carte des bornes"><figcaption><span data-l="fr">Carte des bornes et tableau filtrable par opérateur et puissance.</span><span data-l="en">Charging-point map and a table filtered by operator and power.</span></figcaption></figure><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-pred-puiss.webp" alt="Résultat de prédiction"><figcaption><span data-l="fr">Un clic sur une borne&nbsp;: le modèle prédit sa puissance en direct.</span><span data-l="en">One click on a charging point: the model predicts its power live.</span></figcaption></figure></div></div>
+    <div class="body"><div class="shots"><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-accueil.webp" alt="Accueil MaStation"><figcaption><span data-l="fr">Accueil&nbsp;: les chiffres clés de la base en un coup d'œil.</span><span data-l="en">Home: the database's key figures at a glance.</span></figcaption></figure><div class="shots two"><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-carte.webp" alt="Carte des bornes"><figcaption><span data-l="fr">Carte des bornes et tableau filtrable par opérateur et puissance.</span><span data-l="en">Charging-point map and a table filtered by operator and power.</span></figcaption></figure><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-pred-puiss.webp" alt="Résultat de prédiction"><figcaption><span data-l="fr">Un clic sur une borne&nbsp;: le modèle prédit sa puissance en direct.</span><span data-l="en">One click on a charging point: the model predicts its power live.</span></figcaption></figure></div></div>
       <p style="margin-top:14px; font-size:.82rem; color:var(--muted)"><span data-l="fr">Captures de l'application lancée en local avec la base d'exemple du projet (fond de carte non chargé).</span><span data-l="en">Screenshots of the app running locally on the project's sample database (map tiles not loaded).</span></p></div>
   </section>
 
   <section>
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Résultats</span><span data-l="en">Results</span></div><h2><span data-l="fr">Les résultats des modèles</span><span data-l="en">How the models performed</span></h2></div>
     <div class="body">
-      <div class="human depth">
+      <div class="human">
           <div class="h-card"><div class="viz"><div class="dots140" data-dots="140"></div></div>
             <strong class="count" data-to="140000">140 000</strong>
             <span data-l="fr">bornes de recharge analysées, dans toute la France</span><span data-l="en">charging points analysed, all across France</span>
@@ -518,7 +517,7 @@
             <small>K-Means, k = 5</small></div>
         </div>
       <h4><span data-l="fr">En termes techniques</span><span data-l="en">In technical terms</span></h4>
-      <div class="bars depth">
+      <div class="bars">
         <div class="bar"><span data-l="fr">Type d'implantation (Random Forest / Extra Trees)</span><span data-l="en">Site type (Random Forest / Extra Trees)</span><div class="track"><div class="fill" style="width:90%"></div></div><b>90 %</b></div>
         <div class="bar"><span data-l="fr">Puissance, régression (R²)</span><span data-l="en">Power, regression (R²)</span><div class="track"><div class="fill" style="width:88%"></div></div><b>0,88</b></div>
         <div class="bar"><span data-l="fr">Puissance en 6 classes (Extra Trees)</span><span data-l="en">Power in 6 classes (Extra Trees)</span><div class="track"><div class="fill" style="width:85%"></div></div><b>85 %</b></div>
@@ -589,13 +588,13 @@
 
   <section>
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">La maquette</span><span data-l="en">The mock-up</span></div><h2><span data-l="fr">À quoi ressemblera le jeu</span><span data-l="en">What the game will look like</span></h2></div>
-    <div class="body"><div class="maq"><div><button type="button" class="flip" aria-label="Retourner la carte Automo"><div class="flip-in"><div class="face"><img src="img/automo-recto.webp" alt="Carte Automo : Bugatti Chiron, rareté légendaire"></div><div class="face back"><img src="img/automo-dos.webp" alt="Dos de carte Automo"></div></div></button><div class="flip-hint"><span data-l="fr">Survolez ou touchez pour retourner</span><span data-l="en">Hover or tap to flip</span></div></div><div><p data-l="fr" style="color:#D7DAE8">Chaque carte affiche la valeur estimée en Octane (la monnaie du jeu), son évolution, la puissance, la vitesse, l'année et le nombre d'exemplaires produits. La lueur sur le côté indique la rareté.</p><p data-l="en" style="color:#D7DAE8">Each card shows its estimated value in Octane (the in-game currency), its trend, power, top speed, year and production numbers. The side glow shows its rarity.</p></div></div><div class="shots two depth"><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/automo-collection.webp" alt="Page Collection"><figcaption><span data-l="fr">Collection&nbsp;: filtres par rareté, catégorie, pays et année.</span><span data-l="en">Collection: filters by rarity, category, country and year.</span></figcaption></figure><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/automo-boosters.webp" alt="Page Boosters"><figcaption><span data-l="fr">Boosters&nbsp;: packs par pays, chances affichées, parrainage et défis du jour.</span><span data-l="en">Boosters: country packs, published odds, referrals and daily challenges.</span></figcaption></figure></div><p style="margin-top:14px; font-size:.82rem; color:var(--muted)"><span data-l="fr">Maquettes de conception, pas encore le jeu développé.</span><span data-l="en">Design mock-ups, not the finished game yet.</span></p></div>
+    <div class="body"><div class="maq"><div><button type="button" class="flip" aria-label="Retourner la carte Automo"><div class="flip-in"><div class="face"><img src="img/automo-recto.webp" alt="Carte Automo : Bugatti Chiron, rareté légendaire"></div><div class="face back"><img src="img/automo-dos.webp" alt="Dos de carte Automo"></div></div></button><div class="flip-hint"><span data-l="fr">Survolez ou touchez pour retourner</span><span data-l="en">Hover or tap to flip</span></div></div><div><p data-l="fr" style="color:#D7DAE8">Chaque carte affiche la valeur estimée en Octane (la monnaie du jeu), son évolution, la puissance, la vitesse, l'année et le nombre d'exemplaires produits. La lueur sur le côté indique la rareté.</p><p data-l="en" style="color:#D7DAE8">Each card shows its estimated value in Octane (the in-game currency), its trend, power, top speed, year and production numbers. The side glow shows its rarity.</p></div></div><div class="shots two"><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/automo-collection.webp" alt="Page Collection"><figcaption><span data-l="fr">Collection&nbsp;: filtres par rareté, catégorie, pays et année.</span><span data-l="en">Collection: filters by rarity, category, country and year.</span></figcaption></figure><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/automo-boosters.webp" alt="Page Boosters"><figcaption><span data-l="fr">Boosters&nbsp;: packs par pays, chances affichées, parrainage et défis du jour.</span><span data-l="en">Boosters: country packs, published odds, referrals and daily challenges.</span></figcaption></figure></div><p style="margin-top:14px; font-size:.82rem; color:var(--muted)"><span data-l="fr">Maquettes de conception, pas encore le jeu développé.</span><span data-l="en">Design mock-ups, not the finished game yet.</span></p></div>
   </section>
 
   <section>
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Technique</span><span data-l="en">Tech</span></div><h2><span data-l="fr">Ce que j'apprends, où j'en suis</span><span data-l="en">What I'm learning, where I stand</span></h2></div>
     <div class="body">
-      <div class="learn-grid depth">
+      <div class="learn-grid">
         <div><h3><span data-l="fr">Déjà à l'aise</span><span data-l="en">Comfortable with</span></h3><ul>
           <li>Python <span data-l="fr">(scripts d'import)</span><span data-l="en">(import scripts)</span></li>
           <li>JavaScript, HTML, CSS</li><li>SQL</li><li>Git / GitHub</li></ul></div>
@@ -607,7 +606,7 @@
           <li><span data-l="fr">Déploiement Vercel</span><span data-l="en">Vercel deployment</span></li></ul></div>
       </div>
       <h4><span data-l="fr">Principes d'architecture</span><span data-l="en">Architecture principles</span></h4>
-      <div class="steps depth">
+      <div class="steps">
         <div class="step"><div><h3><span data-l="fr">Données ouvertes</span><span data-l="en">Open data</span></h3>
           <p data-l="fr">Un script Python importe le catalogue depuis Wikidata, le nettoie (doublons, unités kW → ch) et calcule la rareté avant l'import en base.</p>
           <p data-l="en">A Python script imports the catalogue from Wikidata, cleans it (duplicates, kW → hp) and computes rarity before loading it into the database.</p></div></div>
@@ -645,18 +644,18 @@
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Aperçu</span><span data-l="en">Preview</span></div>
       <h2><span data-l="fr">Clair, sombre et sur téléphone</span><span data-l="en">Light, dark and on mobile</span></h2></div>
     <div class="body">
-      <div class="stage wide" data-stage style="transform:none">
+      <div class="stage wide" style="transform:none">
         <figure class="browser s-wide"><div class="bar"><i></i><i></i><i></i></div><img src="img/drzm-sombre.webp?v=2" alt="Accueil en mode sombre"></figure>
         <figure class="phone"><img src="img/drzm-mobile.webp?v=2" alt="Outil de prévention sur téléphone"></figure>
       </div>
-      <div class="shots two depth" style="margin-top:28px"><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/drzm-glossaire.webp?v=2" alt="Glossaire"><figcaption><span data-l="fr">Glossaire de cardiologie avec recherche et filtre par lettre.</span><span data-l="en">Cardiology glossary with search and letter filter.</span></figcaption></figure><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/drzm-rdv.webp?v=2" alt="Rendez-vous"><figcaption><span data-l="fr">Rendez-vous, horaires (jour actuel surligné) et numéro du secrétariat.</span><span data-l="en">Booking, opening hours (today highlighted) and the front desk number.</span></figcaption></figure></div>
+      <div class="shots two" style="margin-top:28px"><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/drzm-glossaire.webp?v=2" alt="Glossaire"><figcaption><span data-l="fr">Glossaire de cardiologie avec recherche et filtre par lettre.</span><span data-l="en">Cardiology glossary with search and letter filter.</span></figcaption></figure><figure><div class="bar"><i></i><i></i><i></i></div><img src="img/drzm-rdv.webp?v=2" alt="Rendez-vous"><figcaption><span data-l="fr">Rendez-vous, horaires (jour actuel surligné) et numéro du secrétariat.</span><span data-l="en">Booking, opening hours (today highlighted) and the front desk number.</span></figcaption></figure></div>
     </div>
   </section>
 
   <section>
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Fonctionnalités</span><span data-l="en">Features</span></div>
       <h2><span data-l="fr">Ce que le site propose</span><span data-l="en">What the site offers</span></h2></div>
-    <div class="body"><div class="feats depth"><div><b><span data-l="fr">Calculateur d'IMC</span><span data-l="en">BMI calculator</span></b><span data-l="fr">Résultat instantané avec un code couleur, une jauge et des conseils adaptés.</span><span data-l="en">Instant result with colour coding, a gauge and tailored advice.</span></div><div><b><span data-l="fr">Test de fréquence cardiaque</span><span data-l="en">Heart-rate test</span></b><span data-l="fr">Minuteur intégré pour compter ses battements et obtenir ses BPM.</span><span data-l="en">Built-in timer to count heartbeats and get your BPM.</span></div><div><b><span data-l="fr">Glossaire interactif</span><span data-l="en">Interactive glossary</span></b><span data-l="fr">Recherche en temps réel et filtre par lettre dans un dictionnaire de cardiologie.</span><span data-l="en">Live search and letter filter across a cardiology dictionary.</span></div><div><b><span data-l="fr">Prise de rendez-vous</span><span data-l="en">Appointment booking</span></b><span data-l="fr">Accès direct à la plateforme Maiia, jour actuel surligné dans les horaires.</span><span data-l="en">Direct link to the Maiia booking platform, today highlighted in the opening hours.</span></div><div><b><span data-l="fr">Fiche contact (vCard)</span><span data-l="en">Contact card (vCard)</span></b><span data-l="fr">Les coordonnées du cabinet s'ajoutent au répertoire du téléphone en un clic.</span><span data-l="en">The practice's details go into the phone's contacts in one tap.</span></div><div><b><span data-l="fr">Mode sombre mémorisé</span><span data-l="en">Remembered dark mode</span></b><span data-l="fr">Bascule clair / sombre, choix gardé d'une visite à l'autre (localStorage). Sans choix, le site suit le réglage du téléphone ou de l'ordinateur.</span><span data-l="en">Light / dark toggle, remembered between visits (localStorage). With no choice made, it follows the device setting.</span></div></div>
+    <div class="body"><div class="feats"><div><b><span data-l="fr">Calculateur d'IMC</span><span data-l="en">BMI calculator</span></b><span data-l="fr">Résultat instantané avec un code couleur, une jauge et des conseils adaptés.</span><span data-l="en">Instant result with colour coding, a gauge and tailored advice.</span></div><div><b><span data-l="fr">Test de fréquence cardiaque</span><span data-l="en">Heart-rate test</span></b><span data-l="fr">Minuteur intégré pour compter ses battements et obtenir ses BPM.</span><span data-l="en">Built-in timer to count heartbeats and get your BPM.</span></div><div><b><span data-l="fr">Glossaire interactif</span><span data-l="en">Interactive glossary</span></b><span data-l="fr">Recherche en temps réel et filtre par lettre dans un dictionnaire de cardiologie.</span><span data-l="en">Live search and letter filter across a cardiology dictionary.</span></div><div><b><span data-l="fr">Prise de rendez-vous</span><span data-l="en">Appointment booking</span></b><span data-l="fr">Accès direct à la plateforme Maiia, jour actuel surligné dans les horaires.</span><span data-l="en">Direct link to the Maiia booking platform, today highlighted in the opening hours.</span></div><div><b><span data-l="fr">Fiche contact (vCard)</span><span data-l="en">Contact card (vCard)</span></b><span data-l="fr">Les coordonnées du cabinet s'ajoutent au répertoire du téléphone en un clic.</span><span data-l="en">The practice's details go into the phone's contacts in one tap.</span></div><div><b><span data-l="fr">Mode sombre mémorisé</span><span data-l="en">Remembered dark mode</span></b><span data-l="fr">Bascule clair / sombre, choix gardé d'une visite à l'autre (localStorage). Sans choix, le site suit le réglage du téléphone ou de l'ordinateur.</span><span data-l="en">Light / dark toggle, remembered between visits (localStorage). With no choice made, it follows the device setting.</span></div></div>
       <p style="margin-top:16px; color:var(--muted); max-width:62ch"><span data-l="fr">Tout est codé en JavaScript «&nbsp;vanilla&nbsp;», sans framework. Mise en page en Flexbox et CSS Grid, variables CSS pour les deux thèmes, animations au défilement (AOS) et écran de chargement en forme de cœur.</span><span data-l="en">Everything is written in vanilla JavaScript, no framework. Layout in Flexbox and CSS Grid, CSS variables for both themes, scroll animations (AOS) and a heart-shaped loading screen.</span></p></div>
   </section>
 
@@ -689,7 +688,7 @@
       <div><span data-l="fr">Code</span><span data-l="en">Code</span><b data-l="fr" style="font-weight:400">~1 600 lignes, 7 modules</b><b data-l="en" style="font-weight:400">~1,600 lines, 7 modules</b></div>
       <div><span data-l="fr">Tests</span><span data-l="en">Tests</span><b data-l="fr" style="font-weight:400">10 scénarios</b><b data-l="en" style="font-weight:400">10 scenarios</b></div>
     </div>
-    <div class="mstage" data-stage style="transform:none; margin-top:36px"><img class="mboard" src="img/maze-board.webp" alt="Plateau de Robot Maze avec ses pièges et ses 4 robots"><img class="mcard" src="img/maze-F1.webp" alt="Carte F1"><img class="mcard" src="img/maze-F2.webp" alt="Carte F2"><img class="mcard" src="img/maze-F3.webp" alt="Carte F3"><img class="mcard" src="img/maze-L.webp" alt="Carte L"><img class="mcard" src="img/maze-R.webp" alt="Carte R"></div>
+    <div class="mstage" style="transform:none; margin-top:36px"><img class="mboard" src="img/maze-board.webp" alt="Plateau de Robot Maze avec ses pièges et ses 4 robots"><img class="mcard" src="img/maze-F1.webp" alt="Carte F1"><img class="mcard" src="img/maze-F2.webp" alt="Carte F2"><img class="mcard" src="img/maze-F3.webp" alt="Carte F3"><img class="mcard" src="img/maze-L.webp" alt="Carte L"><img class="mcard" src="img/maze-R.webp" alt="Carte R"></div>
   </header>
 
   <section>
@@ -712,7 +711,7 @@
   <section>
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Sous le capot</span><span data-l="en">Under the hood</span></div>
       <h2><span data-l="fr">Comment c'est construit</span><span data-l="en">How it's built</span></h2></div>
-    <div class="body steps depth">
+    <div class="body steps">
       <div class="step"><div><h3><span data-l="fr">Interface PySide6</span><span data-l="en">PySide6 interface</span></h3>
         <p data-l="fr">Fenêtre de choix du nombre de joueurs, affichage des règles et main de cartes cliquables pour chaque joueur.</p>
         <p data-l="en">Player-count window, rules screens and a clickable hand of cards for each player.</p></div></div>
@@ -732,7 +731,7 @@
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Règles</span><span data-l="en">Rules</span></div>
       <h2><span data-l="fr">Les écrans du jeu</span><span data-l="en">The in-game screens</span></h2></div>
     <div class="body">
-      <div class="shots two depth">
+      <div class="shots two">
         <figure><img src="img/maze-jeu.webp" alt="Règles du jeu Robot Maze"><figcaption><span data-l="fr">Les règles affichées au lancement.</span><span data-l="en">The rules shown at launch (in French).</span></figcaption></figure>
         <figure><img src="img/maze-cartes.webp" alt="Cartes d'action de Robot Maze"><figcaption><span data-l="fr">Les 7 cartes d'action.</span><span data-l="en">The 7 action cards.</span></figcaption></figure>
       </div>
@@ -770,7 +769,7 @@
       <div class="t-ctrl">
         <label><span><span data-l="fr">Consigne</span><span data-l="en">Setpoint</span> <b data-out="c">19,0 °C</b></span><input type="range" min="12" max="26" step="0.5" value="19" data-in="c"></label>
         <label><span><span data-l="fr">Température extérieure</span><span data-l="en">Outside temperature</span> <b data-out="e">10,0 °C</b></span><input type="range" min="-5" max="18" step="0.5" value="10" data-in="e"></label>
-        <div class="t-read depth">
+        <div class="t-read">
           <div><span data-l="fr">Intérieur · PID</span><span data-l="en">Inside · PID</span><b data-out="tp">15,0 °C</b><small data-out="pp">0 %</small></div>
           <div><span data-l="fr">Intérieur · tout-ou-rien</span><span data-l="en">Inside · on/off</span><b data-out="tt">15,0 °C</b><small data-out="pt">0 %</small></div>
           <div><span data-l="fr">Temps simulé</span><span data-l="en">Simulated time</span><b data-out="time">0 min</b><button type="button" class="reset" data-act="reset"><span data-l="fr">↺ Recommencer</span><span data-l="en">↺ Restart</span></button></div>
@@ -783,7 +782,7 @@
   <section>
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Les deux lois de régulation</span><span data-l="en">The two control laws</span></div>
       <h2><span data-l="fr">Tout-ou-rien contre PID</span><span data-l="en">On/off versus PID</span></h2></div>
-    <div class="body feats depth">
+    <div class="body feats">
       <div><b><span data-l="fr">Tout-ou-rien</span><span data-l="en">On/off</span></b>
         <span data-l="fr">Comme un vieux thermostat&nbsp;: s'il fait moins que la consigne, on chauffe à 50&nbsp;%, sinon on coupe. Simple, mais la température oscille sans cesse autour de la cible.</span>
         <span data-l="en">Like an old thermostat: below the setpoint, heat at 50%; otherwise switch off. Simple, but the temperature keeps oscillating around the target.</span></div>
@@ -824,7 +823,7 @@ if (cmd > 100) cmd = 100; else if (cmd &lt; 0) cmd = 0;</code></pre>
   <section>
     <div class="sec-head"><div class="eyebrow"><span data-l="fr">Sous le capot</span><span data-l="en">Under the hood</span></div>
       <h2><span data-l="fr">Comment c'est construit</span><span data-l="en">How it's built</span></h2></div>
-    <div class="body steps depth">
+    <div class="body steps">
       <div class="step"><div><h3><span data-l="fr">Lecture des capteurs</span><span data-l="en">Reading the sensors</span> <small class="f">releve.c</small></h3>
         <p data-l="fr">Connexion à la carte STM32 avec la librairie FTDI (115 200 bauds, 8 bits, sans parité), lecture et décodage des 6 octets de chaque mesure.</p>
         <p data-l="en">Connects to the STM32 board with the FTDI library (115,200 baud, 8 bits, no parity), then reads and decodes the 6 bytes of each reading.</p></div></div>
