@@ -1,11 +1,13 @@
 (function(){
-  var N=14, board=document.getElementById('board'); if(!board) return;
+  var N=14;
   var holes=[[6,2],[7,3],[7,10],[7,11],[1,7],[3,7],[3,6],[11,6],[12,6],[7,7]], walls=[[6,6],[6,7],[7,6],[6,1],[6,3],[2,7],[10,6],[10,7],[6,10],[7,12]],
       sand=[[8,8]], portals=[[3,8],[8,3]];
+  var start=[{c:'#E53935',x:1,y:5,d:0},{c:'#2E9E4F',x:5,y:12,d:3},{c:'#2E6BFF',x:12,y:8,d:2},{c:'#FF9800',x:8,y:1,d:1}], bots=[];
+  window.MAZE={N:N, holes:holes, walls:walls, sand:sand, portals:portals, start:start}; /* partagé avec la mini-partie (js/projects.js) */
+  var board=document.getElementById('board'); if(!board) return;
   function has(list,x,y){ return list.some(function(p){return p[0]===x&&p[1]===y;}); }
   function kind(x,y){ return has(holes,x,y)?'h':has(walls,x,y)?'w':has(sand,x,y)?'q':has(portals,x,y)?'p':''; }
   for(var y=N-1;y>=0;y--) for(var x=0;x<N;x++){ var d=document.createElement('div'); d.className='t '+kind(x,y); board.appendChild(d); }
-  var start=[{c:'#E53935',x:1,y:5,d:0},{c:'#2E9E4F',x:5,y:12,d:3},{c:'#2E6BFF',x:12,y:8,d:2},{c:'#FF9800',x:8,y:1,d:1}], bots=[];
   var svg=function(c){ return '<svg viewBox="0 0 24 24"><rect x="3" y="5" width="16" height="14" rx="3" fill="'+c+'"/><rect x="2" y="3" width="18" height="4" rx="2" fill="#222"/><rect x="2" y="17" width="18" height="4" rx="2" fill="#222"/><circle cx="11" cy="12" r="4" fill="rgba(255,255,255,.35)"/><rect x="11" y="10.8" width="12" height="2.4" rx="1" fill="'+c+'"/></svg>'; };
   var stuck=0;
   function place(b){ var cell=(board.clientWidth-12-2*(N-1))/N;

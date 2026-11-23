@@ -102,4 +102,7 @@ out = {'source': 'IRVE_nettoye_2.csv (MaStation), points de charge FR uniques, F
        'variables': name, 'k': 5, 'silhouette_echantillon': round(sil, 3), 'total': total,
        'clusters': clusters, 'points': pts, 'format_points': '[lat, lon, cluster, nb_bornes]'}
 json.dump(out, open(sys.argv[2], 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+# Copie en .js : lisible aussi quand le site est ouvert en file:// (fetch y est bloqué)
+open(sys.argv[2][:-5] + '.js', 'w', encoding='utf-8').write('window.IRVE_CLUSTERS=' + json.dumps(out, ensure_ascii=False, separators=(',', ':')) + ';
+')
 print('points :', len(pts), 'somme :', sum(p[3] for p in pts), 'clusters :', [c['n'] for c in clusters])

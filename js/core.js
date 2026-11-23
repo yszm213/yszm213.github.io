@@ -39,11 +39,32 @@
     scrollToEl(el, !!target && wasHome); /* clic sur l'accueil : glisse ; arrivée d'ailleurs : saut direct */
     onScroll();
   }
-  document.addEventListener('click', function(e){
-    var a=e.target.closest('[data-go]'); if(!a) return;
-    var t=a.getAttribute('data-go'); e.preventDefault();
+  function navigate(t){
     if(location.hash.slice(1)!==t){ try{ history.pushState(null,'','#'+t); }catch(err){ location.hash=t; return; } }
     route(t);
+  }
+  function viewOf(t){ return CASES.indexOf(t)>=0 ? t : 'home'; }
+  function current(){ return Object.keys(views).filter(function(k){ return !views[k].hidden; })[0]; }
+  document.addEventListener('click', function(e){
+    var a=e.target.closest('[data-go]'); if(!a) return;
+    /* Tuile cliquable : un bouton à l'intérieur (carte Automo, filtres, légende) garde son propre rôle */
+    var ctl=e.target.closest('button, input, label, select'); if(ctl && ctl!==a && a.contains(ctl)) return;
+    if(e.ctrlKey || e.metaKey || e.shiftKey) return; /* ouvrir dans un nouvel onglet reste possible */
+    var t=a.getAttribute('data-go'), cur=current(), next=viewOf(t); e.preventDefault();
+    /* Changement de vue : View Transitions API, la tuile s'agrandit jusqu'à devenir la page projet (et l'inverse au retour) */
+    if(cur===next || reduce || !document.startViewTransition){ navigate(t); return; }
+    var src = cur==='home' ? a.closest('[data-case]') : views[cur], dst=null;
+    if(src) src.style.viewTransitionName='proj';
+    var ran=false, vt=document.startViewTransition(function(){
+      ran=true;
+      if(src) src.style.viewTransitionName='';
+      navigate(t);
+      dst = next==='home' ? views.home.querySelector('.t-proj[data-case="'+cur+'"]') : (src ? views[next] : null);
+      if(dst) dst.style.viewTransitionName='proj';
+    });
+    vt.finished.finally(function(){ if(dst) dst.style.viewTransitionName=''; });
+    /* Garde-fou : si le navigateur ne produit pas d'image (rendu gelé), on saute l'animation ; la navigation a lieu quand même */
+    setTimeout(function(){ if(!ran) vt.skipTransition(); }, 500);
   });
   window.addEventListener('popstate', function(){ route(); });
   window.addEventListener('hashchange', function(){ route(); });

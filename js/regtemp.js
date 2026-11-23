@@ -48,7 +48,15 @@
     return { set:function(k,v){ if(k==='c') c=v; else te=v; if(reduce){ for(var i=0;i<N;i++) step(); draw(); } },
              reset:function(){ reset(); if(reduce){ for(var i=0;i<N;i++) step(); } draw(); } };
   }
-  var mini=document.querySelector('[data-thermo="mini"]'); if(mini) Thermo(mini,{mini:true});
+  var mini=document.querySelector('[data-thermo="mini"]');
+  if(mini){
+    /* Jauge de la tuile Projets : aiguille sur la température PID (échelle 12 → 26 °C) */
+    var dial=mini.parentNode.querySelector('[data-dial]');
+    Thermo(mini,{mini:true, onDraw:dial && function(st){ var f=Math.max(0,Math.min(1,(st.tp-12)/14));
+      dial.querySelector('.d-n').style.transform='rotate('+(-90+180*f)+'deg)';
+      dial.querySelector('.d-v').style.strokeDashoffset=100-100*f;
+      dial.querySelector('[data-dial-v]').textContent=fmt(st.tp)+' °C'; }});
+  }
   var big=document.querySelector('[data-thermo="big"]');
   if(big){
     var sec=big.closest('section'), q=function(s){ return sec.querySelector(s); };
