@@ -1,5 +1,5 @@
 /* Section Projets : carte des bornes (clusters K-Means réels), légende des 5 zones, mini-partie Robot Maze,
-   filtres École / Perso, wagons (bin packing), tuiles cliquables. Sans GSAP : tout reste affiché à l'état final. */
+   wagons (bin packing), tuiles cliquables. Sans GSAP : tout reste affiché à l'état final. */
 (function(){
   var root=document.documentElement, grid=document.querySelector('.b-proj'); if(!grid) return;
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -10,14 +10,6 @@
 
   /* ----- Tuiles cliquables : un tap/clic n'importe où ouvre la page projet ----- */
   grid.querySelectorAll('[data-case]').forEach(function(t){ t.setAttribute('data-go', t.dataset.case); });
-
-  /* ----- Filtres ----- */
-  var fbtn=[].slice.call(grid.querySelectorAll('.filters button'));
-  fbtn.forEach(function(b){ b.addEventListener('click', function(){
-    grid.dataset.filter=b.dataset.f;
-    fbtn.forEach(function(x){ x.setAttribute('aria-pressed', x===b); });
-    if(ST) ST.refresh();
-  }); });
 
   /* ----- Carte de France + clusters ----- */
   var COLORS=['#8FA2FF','#5EE6D0','#C08BFF','#FFC873','#FF8FB1'];

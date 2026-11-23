@@ -170,7 +170,9 @@ html.lenis, html.lenis body{height:auto}
 .t-id h1 em.w{display:block; width:max-content; font-style:normal; font-weight:300}
 .t-id h1 .w, .t-id h1 .ch{background:linear-gradient(180deg,#FFFFFF 10%, #B8C1FF 70%, #6A7BFF); -webkit-background-clip:text; background-clip:text; color:transparent}
 .t-id h1.is-split .w{background:none}
-.t-id h1 .w, .t-id h1 .ch{padding-block:.14em .06em; margin-block:-.14em -.06em}
+/* Glyphes plus hauts que la ligne (line-height .86) : le dégradé et le calque 3D de l'animation
+   sont coupés à la boîte de la lettre. Grande marge intérieure en haut, compensée par une marge négative. */
+.t-id h1 .w, .t-id h1 .ch{padding-block:.4em .18em; margin-block:-.4em -.18em}
 .t-id h1.is-split .w{padding:0; margin:0}
 .t-id h1 .ch{display:inline-block; transform-origin:50% 100%}
 .t-id .lede{font-size:clamp(1.05rem, 1.25vw, 1.35rem); line-height:1.5; max-width:36ch; margin:0 0 28px; color:var(--soft)}
@@ -196,7 +198,7 @@ html.lenis, html.lenis body{height:auto}
 .alt-bar i:nth-child(even){background:var(--warn)}
 
 /* E · En 30 secondes */
-.t-tldr{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); grid-template-rows:auto 1fr; gap:14px 28px}
+.t-tldr{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); grid-template-rows:auto auto; align-content:center; gap:14px 28px}
 .t-tldr > .k{grid-column:1 / -1}
 .tldr-tabs{grid-column:1; grid-row:2; display:grid; gap:8px; align-content:center}
 .tldr-tabs button{position:relative; display:grid; grid-template-columns:24px 1fr; align-items:center; gap:12px; min-height:52px; padding:10px 14px; border:0; border-radius:14px;
@@ -274,7 +276,8 @@ html.lenis, html.lenis body{height:auto}
 /* =====================================================================
    SECTION PROJETS (tuiles K à X)
    ===================================================================== */
-.b-proj{grid-auto-rows:minmax(150px,auto); margin-block:22px; scroll-margin-top:0}
+.b-proj{grid-auto-rows:auto; margin-block:22px; scroll-margin-top:0}
+.b-proj > .tile{min-height:150px}
 [data-case]{cursor:pointer}
 .tile .tag{font-family:var(--mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--tag)}
 .t-proj{display:flex; flex-direction:column; gap:12px; padding:clamp(22px,2.4vw,36px)}
@@ -285,14 +288,13 @@ html.lenis, html.lenis body{height:auto}
 
 /* Placement desktop (12 colonnes) */
 @media (min-width:1200px){
-  .t-head{grid-column:1 / 8; grid-row:1}
-  .t-map{grid-column:8 / 11; grid-row:1 / 4}
-  .t-m{grid-column:11 / 13; grid-row:1} .t-o{grid-column:11 / 13; grid-row:2} .t-p{grid-column:11 / 13; grid-row:3}
-  .t-mast{grid-column:1 / 8; grid-row:2 / 5}
-  .t-q{grid-column:8 / 13; grid-row:4}
-  .t-maze{grid-column:1 / 5; grid-row:5 / 7} .t-mini{grid-column:5 / 8; grid-row:5 / 7} .t-reg{grid-column:8 / 13; grid-row:5 / 7}
-  .t-auto{grid-column:1 / 6; grid-row:7 / 10} .t-drzm{grid-column:6 / 13; grid-row:7 / 10}
-  .t-wag{grid-column:1 / 8; grid-row:10} .t-x{grid-column:8 / 13; grid-row:10; align-self:center}
+  .t-head, .sub-h{grid-column:1 / -1}
+  .t-mast{grid-column:1 / 8; grid-row:3 / 6}
+  .t-map{grid-column:8 / 11; grid-row:3 / 6}
+  .t-m{grid-column:11 / 13; grid-row:3} .t-o{grid-column:11 / 13; grid-row:4} .t-p{grid-column:11 / 13; grid-row:5}
+  .t-wag{grid-column:1 / 8; grid-row:6} .t-q{grid-column:8 / 13; grid-row:6}
+  .t-maze{grid-column:1 / 5; grid-row:7 / 9} .t-mini{grid-column:5 / 8; grid-row:7 / 9} .t-reg{grid-column:8 / 13; grid-row:7 / 9}
+  .t-auto{grid-column:1 / 6; grid-row:10 / 13} .t-drzm{grid-column:6 / 13; grid-row:10 / 13}
 }
 /* Tablette : 6 colonnes, placement automatique */
 @media (min-width:900px) and (max-width:1199px){
@@ -309,16 +311,21 @@ html.lenis, html.lenis body{height:auto}
 }
 
 /* K · Titre + filtres */
-.t-head{display:flex; flex-direction:column; justify-content:flex-end; gap:12px; padding:clamp(22px,2.6vw,40px)}
+.t-head{display:flex; flex-direction:column; justify-content:flex-end; gap:10px; padding:clamp(22px,2.6vw,40px); min-height:0 !important}
 .t-head .eyebrow{font-family:var(--mono); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; color:var(--tag)}
 .t-head h2{font-family:var(--display); font-weight:800; font-size:clamp(2rem, 6.4cqi, 4rem); line-height:.95; letter-spacing:-.04em; margin:0; text-wrap:balance}
-.filters{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
-.filters button{min-height:44px; padding:0 18px; border-radius:999px; border:1px solid var(--edge); background:rgba(255,255,255,.04); color:var(--muted); font:600 .88rem var(--text); cursor:pointer; transition:background .25s, color .25s}
-.filters button[aria-pressed="true"]{background:var(--ink); color:var(--bg); border-color:var(--ink)}
-/* Filtre actif : desktop = tuiles hors filtre estompées (la grille garde sa forme) ; mobile = masquées */
-.b-proj [data-kind]{transition:opacity .45s var(--ease), filter .45s var(--ease)}
-.b-proj[data-filter="ecole"] [data-kind="perso"], .b-proj[data-filter="perso"] [data-kind="ecole"]{opacity:.16; filter:grayscale(1) blur(2px); pointer-events:none}
-@media (max-width:899px){ .b-proj[data-filter="ecole"] [data-kind="perso"], .b-proj[data-filter="perso"] [data-kind="ecole"]{display:none} }
+
+/* Sous-groupes titrés + badge école / perso sur chaque tuile */
+.sub-h{display:flex; align-items:baseline; gap:14px; padding:22px 6px 2px; border-bottom:1px solid var(--faint); scroll-margin-top:0}
+.sub-h h3{font-family:var(--display); font-weight:700; font-size:clamp(1.5rem, 2.4vw, 2.2rem); letter-spacing:-.03em; margin:0}
+.sub-h::before{content:""; width:10px; height:10px; border-radius:50%; align-self:center; background:var(--kc); box-shadow:0 0 14px var(--kc)}
+.sub-n{font-family:var(--mono); font-size:.72rem; color:var(--muted)}
+[data-k="ecole"]{--kc:#8FA2FF} [data-k="perso"]{--kc:#FF8FB1}
+.kind{position:absolute; top:14px; right:14px; z-index:4; display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px;
+  font:600 .64rem var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--kc); background:color-mix(in srgb, var(--kc) 14%, rgba(7,8,13,.7)); border:1px solid color-mix(in srgb, var(--kc) 45%, transparent)}
+.kind::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--kc)}
+.t-proj .tag, .t-map > .k, .t-mini > .k, .wag-txt .tag{padding-right:96px} /* laisse la place au badge */
+.t-stat{padding-top:46px}
 
 /* L · Carte */
 .t-map{display:flex; flex-direction:column; gap:10px; margin:0}
@@ -418,9 +425,6 @@ html.lenis, html.lenis body{height:auto}
 .wagon i{position:absolute; top:3px; bottom:3px; margin-left:2px; border-radius:5px; display:grid; place-items:center; font:600 .66rem var(--mono); color:var(--bg)}
 @media (max-width:899px){ .t-wag{grid-template-columns:1fr} }
 
-/* X · Bandeau inversé */
-.t-x{height:56px}
-.mq-rev{animation-direction:reverse}
 
 /* View Transitions : la tuile devient la page projet */
 ::view-transition-group(proj){animation-duration:.6s; animation-timing-function:cubic-bezier(.2,.8,.2,1)}
@@ -430,3 +434,35 @@ html.lenis, html.lenis body{height:auto}
 @media (prefers-reduced-motion: reduce){
   .mini-board .mb, .mini-hand img, .dial .d-n, .dial .d-v{transition:none}
 }
+
+/* =====================================================================
+   PROFIL / PARCOURS : chaque tuile prend la hauteur de son contenu
+   (l'ancienne grille étirait « Carnet de bord » sur 2 rangées à cause d'« En ce moment »)
+   ===================================================================== */
+@media (min-width:1100px){
+  #view-home{grid-auto-flow:row; align-items:start}
+  /* À propos plus étroit, En ce moment plus large : les deux tuiles ont des hauteurs proches sans étirement */
+  #view-home > [data-sec="apropos"]{grid-column:span 5}
+  #view-home > [data-sec="maintenant"]{grid-column:span 7; grid-row:auto}
+  .about{grid-template-columns:1fr 150px; gap:24px}
+  #view-home > [data-sec="experiences"]{grid-column:span 7}
+  #view-home > [data-sec="competences"]{grid-column:span 5}
+  #view-home > [data-sec="contact"]{grid-column:1 / -1}
+  .now ul{height:auto; grid-auto-rows:auto}
+  .log-wrap{height:auto}
+  .skills{flex:none; grid-auto-rows:auto; grid-template-columns:1fr 1fr}
+  .skills ul{flex:none; justify-content:flex-start}
+  .contact{flex:none; grid-auto-rows:auto; grid-template-columns:repeat(3, minmax(0,1fr))}
+}
+/* En ce moment : cartes compactes (Spark en large, puis 2 x 2) */
+.now ul{grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px}
+.now li{display:flex; flex-direction:column; align-items:flex-start; padding:14px 16px; gap:6px}
+.now li .chip{order:-1} /* pastille au-dessus du titre : plus de titre écrasé dans les cartes étroites */
+.now li:first-child{grid-column:1 / -1}
+.now li h3{font-size:1rem}
+.now li p{font-size:.86rem; line-height:1.45}
+@media (max-width:520px){ .now ul{grid-template-columns:1fr} }
+
+/* Compétences : précision sous le nom (colonnes étroites) */
+.skills li{flex-direction:column; gap:0}
+.skills li small{text-align:left}

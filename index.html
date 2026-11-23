@@ -144,8 +144,8 @@
     <!-- J · Bandeau technos (liste doublée pour une boucle sans couture) -->
     <div class="tile t-marquee" data-tile>
       <div class="mq-track">
-        <ul><li>Python</li><li>pandas</li><li>NumPy</li><li>scikit-learn</li><li>SQL</li><li>MySQL</li><li>PostgreSQL</li><li>Apache Spark</li><li>Scala</li><li>Power BI</li><li>Matplotlib</li><li>Seaborn</li><li>C</li><li>STM32</li><li>Java</li><li>JavaScript</li><li>PHP</li><li>Next.js</li><li>React</li><li>Tailwind CSS</li><li>Prisma</li><li>Git</li></ul>
-        <ul aria-hidden="true"><li>Python</li><li>pandas</li><li>NumPy</li><li>scikit-learn</li><li>SQL</li><li>MySQL</li><li>PostgreSQL</li><li>Apache Spark</li><li>Scala</li><li>Power BI</li><li>Matplotlib</li><li>Seaborn</li><li>C</li><li>STM32</li><li>Java</li><li>JavaScript</li><li>PHP</li><li>Next.js</li><li>React</li><li>Tailwind CSS</li><li>Prisma</li><li>Git</li></ul>
+        <ul><li>Python</li><li>SQL</li><li>C</li><li>Java</li><li>JavaScript</li><li>PHP</li><li>HTML/CSS</li><li>AJAX</li><li>MySQL</li><li>PostgreSQL</li><li>Prisma</li><li>Next.js</li><li>React</li><li>Tailwind CSS</li><li>pandas</li><li>NumPy</li><li>scikit-learn</li><li>Matplotlib</li><li>Seaborn</li><li>Machine Learning</li><li>Clustering</li><li>Classification</li><li><span data-l="fr">Régression</span><span data-l="en">Regression</span></li><li>Git/GitHub</li><li>VS Code</li><li>WSL</li><li>Vercel</li></ul>
+        <ul aria-hidden="true"><li>Python</li><li>SQL</li><li>C</li><li>Java</li><li>JavaScript</li><li>PHP</li><li>HTML/CSS</li><li>AJAX</li><li>MySQL</li><li>PostgreSQL</li><li>Prisma</li><li>Next.js</li><li>React</li><li>Tailwind CSS</li><li>pandas</li><li>NumPy</li><li>scikit-learn</li><li>Matplotlib</li><li>Seaborn</li><li>Machine Learning</li><li>Clustering</li><li>Classification</li><li><span data-l="fr">Régression</span><span data-l="en">Regression</span></li><li>Git/GitHub</li><li>VS Code</li><li>WSL</li><li>Vercel</li></ul>
       </div>
     </div>
   </header>
@@ -191,21 +191,32 @@
   </section>
 
   <!-- ================= PROJETS : bento (tuiles K à X) ================= -->
-  <div class="bento b-proj" data-sec="ecole" data-filter="all">
+  <div class="bento b-proj" data-sec="ecole">
 
     <!-- K · Titre + filtres -->
     <div class="tile t-head" data-tile>
       <div class="eyebrow"><span data-l="fr">Projets</span><span data-l="en">Projects</span></div>
       <h2><span data-l="fr">Ce que je construis, à l'école et à côté</span><span data-l="en">What I build, at school and on the side</span></h2>
-      <div class="filters" role="group" aria-label="Filtrer les projets / Filter projects">
-        <button type="button" data-f="all" aria-pressed="true"><span data-l="fr">Tous</span><span data-l="en">All</span></button>
-        <button type="button" data-f="ecole" aria-pressed="false"><span data-l="fr">À l'école</span><span data-l="en">Academic</span></button>
-        <button type="button" data-f="perso" aria-pressed="false"><span data-l="fr">Projets perso</span><span data-l="en">Side projects</span></button>
-      </div>
     </div>
+
+    <!-- Sous-groupe : À l'école -->
+    <div class="sub-h" data-k="ecole"><h3><span data-l="fr">À l'école</span><span data-l="en">Academic</span></h3><span class="sub-n"><span data-l="fr">4 projets</span><span data-l="en">4 projects</span></span></div>
+
+    <!-- N · MaStation -->
+    <article class="tile t-proj t-mast" data-tile data-kind="ecole" data-case="mastation">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
+      <div class="tag"><span data-l="fr">Projet phare · 06 / 2026 · Trinôme, 4 semaines</span><span data-l="en">Featured · 06 / 2026 · Team of 3, 4 weeks</span></div>
+      <h3><span data-l="fr">MaStation&nbsp;: les bornes de recharge de France, analysées et prédites</span><span data-l="en">MaStation: France's EV charging points, analysed and predicted</span></h3>
+      <p data-l="fr">À partir du jeu de données national des bornes IRVE, nous avons construit toute la chaîne&nbsp;: nettoyage, base MySQL, clustering, modèles de prédiction et application web avec carte interactive.</p>
+      <p data-l="en">Starting from France's national EV charging dataset, we built the whole pipeline: cleaning, a MySQL database, clustering, prediction models and a web app with an interactive map.</p>
+      <div class="stage swipe" data-stage><figure class="browser s-main"><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-accueil.webp" alt="Accueil de l'application MaStation" loading="lazy" decoding="async"></figure><figure class="browser s-front"><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-pred-puiss.webp" alt="Prédiction de la puissance d'une borne par le modèle" loading="lazy" decoding="async"></figure></div>
+      <div class="stack"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>MySQL</span><span>PHP</span><span>JavaScript</span><span>Git</span></div>
+      <a class="more" href="#mastation" data-go="mastation"><span data-l="fr">Lire l'étude de cas →</span><span data-l="en">Read the case study →</span></a>
+    </article>
 
     <!-- L · Carte des bornes (vrais clusters K-Means, data/irve-clusters.js) -->
     <figure class="tile t-map" data-tile data-kind="ecole" data-case="mastation">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
       <div class="k"><span data-l="fr">Bornes de recharge · France</span><span data-l="en">Charging points · France</span></div>
       <svg class="fr-map" viewBox="0 0 100 100" role="img" aria-label="Carte de France des bornes de recharge, colorées selon 5 zones K-Means"></svg>
       <figcaption>
@@ -216,12 +227,14 @@
 
     <!-- M · 140 000 -->
     <div class="tile t-stat t-m" data-tile data-kind="ecole">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
       <strong class="big"><span class="count" data-to="140000">140 000</span></strong>
       <span data-l="fr">bornes de recharge analysées, dans toute la France</span><span data-l="en">charging points analysed, all across France</span>
     </div>
 
     <!-- O · 9 sur 10 -->
     <div class="tile t-stat t-o" data-tile data-kind="ecole">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
       <strong class="big"><span data-l="fr">9 sur 10</span><span data-l="en">9 out of 10</span></strong>
       <div class="ten" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="off"></i></div>
       <span data-l="fr">bornes dont le modèle devine correctement l'emplacement (voirie, parking…)</span><span data-l="en">charging points whose location type the model guesses correctly (street, car park…)</span>
@@ -230,6 +243,7 @@
 
     <!-- P · 88 % -->
     <div class="tile t-stat t-p" data-tile data-kind="ecole">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
       <div class="ring-row">
         <svg class="ring2" viewBox="0 0 64 64" aria-hidden="true"><circle class="t" cx="32" cy="32" r="26"/><circle class="v" cx="32" cy="32" r="26" pathLength="100" stroke-dasharray="100" stroke-dashoffset="12"/></svg>
         <strong class="big"><span class="count" data-to="88">88</span>&nbsp;%</strong>
@@ -238,19 +252,9 @@
       <small>R² = 0,88</small>
     </div>
 
-    <!-- N · MaStation -->
-    <article class="tile t-proj t-mast" data-tile data-kind="ecole" data-case="mastation">
-      <div class="tag"><span data-l="fr">Projet phare · 06 / 2026 · Trinôme, 4 semaines</span><span data-l="en">Featured · 06 / 2026 · Team of 3, 4 weeks</span></div>
-      <h3><span data-l="fr">MaStation&nbsp;: les bornes de recharge de France, analysées et prédites</span><span data-l="en">MaStation: France's EV charging points, analysed and predicted</span></h3>
-      <p data-l="fr">À partir du jeu de données national des bornes IRVE, nous avons construit toute la chaîne&nbsp;: nettoyage, base MySQL, clustering, modèles de prédiction et application web avec carte interactive.</p>
-      <p data-l="en">Starting from France's national EV charging dataset, we built the whole pipeline: cleaning, a MySQL database, clustering, prediction models and a web app with an interactive map.</p>
-      <div class="stage swipe" data-stage><figure class="browser s-main"><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-accueil.webp" alt="Accueil de l'application MaStation" loading="lazy" decoding="async"></figure><figure class="browser s-front"><div class="bar"><i></i><i></i><i></i></div><img src="img/mastation-pred-puiss.webp" alt="Prédiction de la puissance d'une borne par le modèle" loading="lazy" decoding="async"></figure></div>
-      <div class="stack"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>MySQL</span><span>PHP</span><span>JavaScript</span><span>Git</span></div>
-      <a class="more" href="#mastation" data-go="mastation"><span data-l="fr">Lire l'étude de cas →</span><span data-l="en">Read the case study →</span></a>
-    </article>
-
     <!-- Q · 5 zones (légende interactive de la carte) -->
     <div class="tile t-stat t-q" data-tile data-kind="ecole">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
       <div class="q-top">
         <strong class="big">5</strong>
         <span data-l="fr">grandes zones de bornes repérées automatiquement, sans les indiquer au modèle</span><span data-l="en">large charging-point zones found automatically, without telling the model</span>
@@ -259,8 +263,22 @@
       <small>K-Means, k = 5</small>
     </div>
 
+    <!-- W · Wagons (bin packing animé) -->
+    <div class="tile t-wag" data-tile data-kind="ecole">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
+      <div class="wag-txt">
+        <div class="tag">05 / 2026</div>
+        <h3><span data-l="fr">Optimisation du chargement de wagons</span><span data-l="en">Railcar loading optimisation</span></h3>
+        <p data-l="fr">Algorithme de répartition d'une liste d'objets dans des wagons, en 1D, 2D et 3D (bin packing).</p>
+        <p data-l="en">Algorithm that packs a list of items into railcars, in 1D, 2D and 3D (bin packing).</p>
+        <div class="stack"><span>Python</span><span><span data-l="fr">Algorithmique</span><span data-l="en">Algorithms</span></span></div>
+      </div>
+      <div class="wagons" data-wagons aria-hidden="true"><div class="wagon"></div><div class="wagon"></div><div class="wagon"></div></div>
+    </div>
+
     <!-- R · Robot Maze -->
     <article class="tile t-proj t-maze" data-tile data-kind="ecole" data-case="robotmaze">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
       <div class="tag"><span data-l="fr">Projet d'école · 06 / 2025 · binôme</span><span data-l="en">School project · 06 / 2025 · pair</span></div>
       <h3><span data-l="fr">Robot Maze&nbsp;: un jeu de plateau où les robots se pilotent avec des cartes</span><span data-l="en">Robot Maze: a board game where robots are driven by cards</span></h3>
       <p data-l="fr">Jeu multijoueur en Python&nbsp;: chaque joueur programme son robot avec des cartes d'action sur un plateau piégé. Le dernier robot en vie gagne. Jouable directement sur la page du projet.</p>
@@ -272,6 +290,7 @@
 
     <!-- S · Mini-partie automatique -->
     <div class="tile t-mini" data-tile data-kind="ecole" data-case="robotmaze">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
       <div class="k"><span data-l="fr">Partie en direct</span><span data-l="en">Live game</span></div>
       <div class="mini-board" data-mini-maze aria-hidden="true"></div>
       <div class="mini-hand" data-mini-hand aria-hidden="true"></div>
@@ -280,6 +299,7 @@
 
     <!-- T · Reg Temp (simulation PID réelle + jauge) -->
     <article class="tile t-proj t-reg" data-tile data-kind="ecole" data-case="regtemp">
+      <span class="kind" data-k="ecole"><span data-l="fr">École</span><span data-l="en">School</span></span>
       <div class="tag"><span data-l="fr">Projet d'école · 03 / 2026 · binôme</span><span data-l="en">School project · 03 / 2026 · pair</span></div>
       <h3><span data-l="fr">Reg Temp&nbsp;: un thermostat intelligent codé en C</span><span data-l="en">Reg Temp: a smart thermostat written in C</span></h3>
       <p data-l="fr">Le programme lit les températures d'une carte STM32 en USB, calcule la puissance de chauffage avec un PID et la renvoie à la carte. Ci-dessous, la vraie simulation, en direct.</p>
@@ -296,8 +316,12 @@
       <a class="more" href="#regtemp" data-go="regtemp"><span data-l="fr">Régler la température soi-même →</span><span data-l="en">Set the temperature yourself →</span></a>
     </article>
 
+    <!-- Sous-groupe : Projets perso -->
+    <div class="sub-h" data-k="perso" data-sec="perso"><h3><span data-l="fr">Projets perso</span><span data-l="en">Side projects</span></h3><span class="sub-n"><span data-l="fr">2 projets</span><span data-l="en">2 projects</span></span></div>
+
     <!-- U · Automo -->
-    <article class="tile t-proj t-auto" data-tile data-kind="perso" data-sec="perso" data-case="automo">
+    <article class="tile t-proj t-auto" data-tile data-kind="perso" data-case="automo">
+      <span class="kind" data-k="perso"><span data-l="fr">Perso</span><span data-l="en">Side project</span></span>
       <div class="tag"><span data-l="fr">En cours · j'apprends en construisant</span><span data-l="en">In progress · learning by building</span></div>
       <h3><span data-l="fr">Automo&nbsp;: un jeu de cartes à collectionner, voitures et motos</span><span data-l="en">Automo: a collectible card game for cars and motorbikes</span></h3>
       <p data-l="fr">Une carte par motorisation, une rareté calculée à partir des caractéristiques réelles du véhicule, des boosters, un marché d'échange et un mode duel.</p>
@@ -309,6 +333,7 @@
 
     <!-- V · Dr Zmouli (clair → sombre au survol) -->
     <article class="tile t-proj t-drzm" data-tile data-kind="perso" data-case="drzm">
+      <span class="kind" data-k="perso"><span data-l="fr">Perso</span><span data-l="en">Side project</span></span>
       <div class="tag"><span data-l="fr">Projet perso · 04 / 2026, refonte 11 / 2026 · réalisé seul</span><span data-l="en">Side project · 04 / 2026, redesigned 11 / 2026 · solo</span></div>
       <h3><span data-l="fr">Le site du cabinet de cardiologie du Dr Zmouli</span><span data-l="en">A website for Dr Zmouli's cardiology practice</span></h3>
       <p data-l="fr">Un vrai site pour un vrai client&nbsp;: informations patients, prise de rendez-vous, glossaire médical et outils de prévention interactifs, codé en HTML, CSS et JavaScript sans framework.</p>
@@ -328,26 +353,6 @@
       <div class="stack"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive</span><span>AOS</span></div>
       <a class="more" href="#drzm" data-go="drzm"><span data-l="fr">Voir le projet en détail →</span><span data-l="en">See the project in detail →</span></a>
     </article>
-
-    <!-- W · Wagons (bin packing animé) -->
-    <div class="tile t-wag" data-tile data-kind="ecole">
-      <div class="wag-txt">
-        <div class="tag">05 / 2026</div>
-        <h3><span data-l="fr">Optimisation du chargement de wagons</span><span data-l="en">Railcar loading optimisation</span></h3>
-        <p data-l="fr">Algorithme de répartition d'une liste d'objets dans des wagons, en 1D, 2D et 3D (bin packing).</p>
-        <p data-l="en">Algorithm that packs a list of items into railcars, in 1D, 2D and 3D (bin packing).</p>
-        <div class="stack"><span>Python</span><span><span data-l="fr">Algorithmique</span><span data-l="en">Algorithms</span></span></div>
-      </div>
-      <div class="wagons" data-wagons aria-hidden="true"><div class="wagon"></div><div class="wagon"></div><div class="wagon"></div></div>
-    </div>
-
-    <!-- X · Bandeau des technos des projets -->
-    <div class="tile t-marquee t-x" data-tile>
-      <div class="mq-track mq-rev">
-        <ul><li>scikit-learn</li><li>MySQL</li><li>PHP</li><li>PySide6</li><li>Turtle</li><li>Pygame</li><li>STM32 · ARM Cortex-M</li><li>USB FTDI</li><li>PID</li><li>Makefile</li><li>Next.js</li><li>Tailwind CSS</li><li>Prisma</li><li>PostgreSQL</li><li>AOS</li></ul>
-        <ul aria-hidden="true"><li>scikit-learn</li><li>MySQL</li><li>PHP</li><li>PySide6</li><li>Turtle</li><li>Pygame</li><li>STM32 · ARM Cortex-M</li><li>USB FTDI</li><li>PID</li><li>Makefile</li><li>Next.js</li><li>Tailwind CSS</li><li>Prisma</li><li>PostgreSQL</li><li>AOS</li></ul>
-      </div>
-    </div>
   </div>
 
   <section data-sec="experiences">
@@ -397,7 +402,7 @@
         <li>C · Java <small><span data-l="fr">école</span><span data-l="en">coursework</span></small></li><li>JavaScript · PHP <small>web</small></li></ul></div>
       <div><h3><span data-l="fr">Web &amp; bases de données</span><span data-l="en">Web &amp; databases</span></h3><ul>
         <li>HTML · CSS · AJAX <small>MaStation</small></li><li>MySQL <small>MaStation</small></li>
-        <li>Next.js · React <small><span data-l="fr">en apprentissage</span><span data-l="en">learning</span></small></li><li>Prisma · PostgreSQL <small><span data-l="fr">en apprentissage</span><span data-l="en">learning</span></small></li></ul></div>
+        <li>Next.js · React <small><span data-l="fr">en apprentissage</span><span data-l="en">learning</span></small></li><li>Prisma · PostgreSQL <small><span data-l="fr">en apprentissage</span><span data-l="en">learning</span></small></li><li>Tailwind CSS <small>Automo</small></li></ul></div>
       <div><h3><span data-l="fr">Outils</span><span data-l="en">Tools</span></h3><ul>
         <li>Git · GitHub <small>commit, push</small></li><li>VS Code <small><span data-l="fr">quotidien</span><span data-l="en">daily</span></small></li>
         <li>WSL <small>Linux / Windows</small></li><li>Vercel <small><span data-l="fr">déploiement</span><span data-l="en">deployment</span></small></li></ul></div>
